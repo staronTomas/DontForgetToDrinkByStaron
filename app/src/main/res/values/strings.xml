@@ -3,4 +3,7 @@
     <string name="titleAppName">Don\'t Forget To Drink</string>
     <string name="changeCupSize">Change cup size</string>
     <string name="alreadyDrank">0/2500 ml</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
