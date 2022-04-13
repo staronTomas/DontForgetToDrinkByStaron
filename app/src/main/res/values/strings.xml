@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Dont_Forget_To_Drink</string>
+    <string name="titleAppName">Don\'t Forget To Drink</string>
+    <string name="changeCupSize">Change cup size</string>
+    <string name="alreadyDrank">0/2500 ml</string>
 </resources>
