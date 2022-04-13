@@ -3,23 +3,15 @@
 
 
     <item
-        android:id="@+id/nav_home"
-        android:title="Home"
-        android:icon="@drawable/ic_baseline_home_24"/>
-
-    <item
-        android:id="@+id/nav_message"
+        android:id="@+id/nav_disable_alarm"
         android:title="Message"
         android:icon="@drawable/ic_baseline_message_24"/>
 
     <item
-        android:id="@+id/nav_sync"
-        android:title="Sync"
-        android:icon="@drawable/ic_baseline_sync_24"/>
-    <item
-        android:id="@+id/nav_trash"
-        android:title="Trash"
-        android:icon="@drawable/ic_baseline_delete_24"/>
+        android:id="@+id/nav_statistics"
+        android:title="Message"
+        android:icon="@drawable/ic_baseline_message_24"/>
+
     <item
         android:id="@+id/nav_settings"
         android:title="Settings"
