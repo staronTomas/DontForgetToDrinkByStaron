@@ -4,28 +4,18 @@
 
     <item
         android:id="@+id/nav_disable_alarm"
-        android:title="Message"
-        android:icon="@drawable/ic_baseline_message_24"/>
+        android:title="Disable Alarm"
+        android:icon="@drawable/ic_baseline_alarm_off_24"/>
 
     <item
         android:id="@+id/nav_statistics"
-        android:title="Message"
-        android:icon="@drawable/ic_baseline_message_24"/>
+        android:title="Statistics"
+        android:icon="@drawable/ic_baseline_auto_graph_24"/>
 
     <item
         android:id="@+id/nav_settings"
         android:title="Settings"
         android:icon="@drawable/ic_baseline_settings_24"/>
-
-    <item  android:title="Profile">
-        <menu>
-
-            <item
-                android:id="@+id/nav_login"
-                android:title="Login"
-                android:icon="@drawable/ic_baseline_login_24"/>
-        </menu>
-    </item>
 
 
     <item  android:title="Communicate">
