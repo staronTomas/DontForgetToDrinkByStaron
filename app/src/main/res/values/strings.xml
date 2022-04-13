@@ -6,4 +6,7 @@
 
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="WelcomeTitle">Welcome to this App :)</string>
+    <string name="woman">woman</string>
+    <string name="man">man</string>
 </resources>
