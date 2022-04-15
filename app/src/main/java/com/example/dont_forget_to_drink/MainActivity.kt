@@ -1,8 +1,10 @@
 package com.example.dont_forget_to_drink
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
@@ -14,24 +16,30 @@ import com.google.android.material.navigation.NavigationView
 class MainActivity : AppCompatActivity() {
 
     private lateinit var toggle : ActionBarDrawerToggle
+    private lateinit var sp : SharedPreferences
+    private lateinit var userName: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
-        val firstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("firstRun", true)
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE)
+
+
+
+        val firstRun = sp.getBoolean("firstRun", true)
         if (firstRun) {
             //... Display the dialog message here ...
             // Save the state
-            getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+            getSharedPreferences("MyUserPrefs", MODE_PRIVATE)
                 .edit()
-                .putBoolean("firstrun", false)
+                .putBoolean("firstRun", false)
                 .commit()
-
             showFirstStartWindow()
         }
 
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
@@ -43,10 +51,17 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        userName = findViewById(R.id.titleBarName)
+
+
+        val userNameSP = sp.getString("userName", "");
+
+
+        userName.text = userNameSP
+
         navView.setNavigationItemSelectedListener {
-
             when(it.itemId) {
-
+                R.id.nav_profile -> Toast.makeText(applicationContext, "Clicked Profile", Toast.LENGTH_SHORT).show()
                 R.id.nav_statistics -> Toast.makeText(applicationContext, "Clicked Statistics", Toast.LENGTH_SHORT).show()
                 R.id.nav_disable_alarm -> Toast.makeText(applicationContext, "Clicked Disable Alarm", Toast.LENGTH_SHORT).show()
                 R.id.nav_settings -> Toast.makeText(applicationContext, "Clicked Settings", Toast.LENGTH_SHORT).show()

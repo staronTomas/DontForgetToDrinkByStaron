@@ -73,7 +73,7 @@
 
 
         <RadioGroup
-            android:id="@+id/radioGroup"
+            android:id="@+id/radioGroupID"
             android:layout_width="126dp"
             android:layout_height="147dp"
             android:layout_alignParentStart="true"
@@ -136,7 +136,7 @@
             app:layout_constraintBottom_toTopOf="@+id/weightTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.403"
-            app:layout_constraintStart_toEndOf="@+id/radioGroup"
+            app:layout_constraintStart_toEndOf="@+id/radioGroupID"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -174,6 +174,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="180dp"
+            android:inputType="numberDecimal"
             android:hint="150"
             android:minWidth="48dp"
             android:minHeight="48dp"
@@ -188,14 +189,14 @@
             android:layout_height="100dp"
             android:layout_margin="10dp"
             android:layout_marginStart="28dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginBottom="28dp"
             android:padding="5dp"
             android:src="@drawable/ic_baseline_image_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/chooseIMGBtn"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroupID"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.compose.ui.text.font.FontWeight
+import org.w3c.dom.Text
 
 class FirstTimeStartedActivity : AppCompatActivity() {
 
@@ -20,6 +21,14 @@ class FirstTimeStartedActivity : AppCompatActivity() {
     private lateinit var nameStr : String
     private lateinit var surnameStr : String
     private lateinit var weightStr: String
+    private lateinit var genderStr: String
+
+
+    private lateinit var radioGroup: RadioGroup
+    private lateinit var radioButton: RadioButton
+    private lateinit var textView: TextView
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,12 +38,12 @@ class FirstTimeStartedActivity : AppCompatActivity() {
         surname = findViewById(R.id.userSurname)
         weight = findViewById(R.id.weightEditText)
 
-        val btn_confirm = findViewById(R.id.confirm_button) as Button
+        val btnConfirm = findViewById(R.id.confirm_button) as Button
 
 
         sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE)
 
-        btn_confirm.setOnClickListener {
+        btnConfirm.setOnClickListener {
             nameStr = name.text.toString()
             surnameStr = surname.text.toString()
             weightStr = weight.text.toString()
@@ -54,8 +63,6 @@ class FirstTimeStartedActivity : AppCompatActivity() {
             }
         }
     }
-
-
 
     fun onRadioButtonClicked(view: View) {
         if (view is RadioButton) {
