@@ -6,17 +6,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.compose.ui.text.font.FontWeight
 
 class FirstTimeStartedActivity : AppCompatActivity() {
 
 
-    lateinit var name : EditText
-    lateinit var surname : EditText
-    lateinit var button : Button
+    private lateinit var name : EditText
+    private lateinit var surname : EditText
+    private lateinit var weight: EditText
+    private lateinit var gender: EditText
 
-    lateinit var sp : SharedPreferences
-    lateinit var nameStr : String
-    lateinit var surnameStr : String
+    private lateinit var sp : SharedPreferences
+    private lateinit var nameStr : String
+    private lateinit var surnameStr : String
+    private lateinit var weightStr: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,26 +27,32 @@ class FirstTimeStartedActivity : AppCompatActivity() {
 
         name = findViewById(R.id.userName)
         surname = findViewById(R.id.userSurname)
+        weight = findViewById(R.id.weightEditText)
+
+        val btn_confirm = findViewById(R.id.confirm_button) as Button
 
 
         sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE)
 
-        button.setOnClickListener(View.OnClickListener {
-            @Override
-            fun onClick(view: View) {
-                nameStr = name.text.toString()
-                surnameStr = surname.text.toString()
+        btn_confirm.setOnClickListener {
+            nameStr = name.text.toString()
+            surnameStr = surname.text.toString()
+            weightStr = weight.text.toString()
+
+            if(nameStr.isEmpty() || surnameStr.isEmpty() || weightStr.isEmpty()) {
+                Toast.makeText(this, "Please, fill out all of the input boxes", Toast.LENGTH_SHORT).show()
+            } else {
 
                 var editor: SharedPreferences.Editor = sp.edit()
 
                 editor.putString("userName", nameStr)
                 editor.putString("userSurname", surnameStr)
+                editor.putString("userWeight", weightStr)
 
                 editor.commit()
-                Toast.makeText(this@FirstTimeStartedActivity, "Information Saved", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
             }
-        })
-
+        }
     }
 
 
