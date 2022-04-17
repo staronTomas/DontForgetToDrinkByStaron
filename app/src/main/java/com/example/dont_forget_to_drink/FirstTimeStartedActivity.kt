@@ -1,17 +1,22 @@
 package com.example.dont_forget_to_drink
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
-import android.view.View.inflate
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.dont_forget_to_drink.databinding.ActivityFirstTimeStartedBinding.inflate
 
 
 class FirstTimeStartedActivity : AppCompatActivity() {
+
+
 
 
     private lateinit var name : EditText
@@ -19,12 +24,20 @@ class FirstTimeStartedActivity : AppCompatActivity() {
     private lateinit var weight: EditText
     private lateinit var age: EditText
 
+    private lateinit var wakeUpTime: EditText
+    private lateinit var sleepTime: EditText
+
     private lateinit var sp : SharedPreferences
     private lateinit var nameStr : String
     private lateinit var surnameStr : String
     private lateinit var weightStr: String
     private lateinit var ageStr: String
-    private lateinit var genderStr: String
+    private var genderStr: String = "man"
+
+    private lateinit var wakeUpTimeStr: String
+    private lateinit var sleepTimeStr: String
+
+    private lateinit var dailyWaterIntakeStr: String
 
     private var mMediaPlayer: MediaPlayer? = null
 
@@ -33,10 +46,15 @@ class FirstTimeStartedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_first_time_started)
 
+
+
+
         name = findViewById(R.id.userNameEditText)
         surname = findViewById(R.id.userSurnameEditText)
         weight = findViewById(R.id.weightEditText)
         age = findViewById(R.id.ageEditText)
+        wakeUpTime = findViewById(R.id.wakeUpTimeEditText)
+        sleepTime = findViewById(R.id.sleepTimeEditText)
 
         val btnConfirm = findViewById(R.id.confirm_button) as Button
 
@@ -52,10 +70,60 @@ class FirstTimeStartedActivity : AppCompatActivity() {
             surnameStr = surname.text.toString()
             weightStr = weight.text.toString()
             ageStr = age.text.toString()
+            wakeUpTimeStr = wakeUpTime.text.toString()
+            sleepTimeStr = sleepTime.text.toString()
 
-            if(nameStr.isEmpty() || surnameStr.isEmpty() || weightStr.isEmpty() || ageStr.isEmpty() || genderStr.isEmpty()) {
+            // kontrola či su vsetky polia vyplnene
+            if(nameStr.isEmpty() || surnameStr.isEmpty() || weightStr.isEmpty() || ageStr.isEmpty() || genderStr.isEmpty() || sleepTimeStr.isEmpty() || wakeUpTimeStr.isEmpty()) {
                 Toast.makeText(this, "Please, fill out all of the input boxes", Toast.LENGTH_SHORT).show()
-            } else {
+            } else if (sleepTimeStr.toInt() > 24 || sleepTimeStr.toInt() < 0 || wakeUpTimeStr.toInt() > 24 || wakeUpTimeStr.toInt() < 0){
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Warning !!!")
+                builder.setMessage("Wake up time and Sleep Time must be numbers in range <0,24>!")
+                //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
+
+                builder.setPositiveButton("Understand") { dialog, which ->
+                    Toast.makeText(applicationContext,
+                        "Thank you!", Toast.LENGTH_SHORT).show()
+                }
+                builder.show()
+            }
+            else {
+
+
+                // tu prebehne vypocet denneho prijmu tekutin
+                // robil som to podla stranky kde sa to pocitalo v ounces nie v ml, tak tu robim aj prevody
+                // link na stranku s pocitanim:  https://www.weightwatchers.com/ca/en/article/how-much-water-should-you-drink-every-day
+
+                var resultWaterInTake = 0.0
+
+
+
+                if(ageStr.toInt() < 30) {
+                    resultWaterInTake = weightStr.toInt() * 40.0
+
+                } else if(ageStr.toInt() < 56) {
+                    resultWaterInTake = weightStr.toInt() * 35.0
+                } else {
+                    resultWaterInTake = weightStr.toInt() * 30.0
+                }
+
+                resultWaterInTake /= 28.3 // teraz mam vysledok v ounces a ešte to prevediem na ml
+
+                resultWaterInTake *= 29.57
+
+                // vysledok si este zaokruhlim na 100ml
+
+                val tempNum = resultWaterInTake % 100
+
+                resultWaterInTake -= tempNum
+
+                dailyWaterIntakeStr = resultWaterInTake.toString()
+                // este mi treba odstranit desatinnu ciarku a cislo za nou tak subStr musim dat
+                dailyWaterIntakeStr = dailyWaterIntakeStr.dropLast(2)
+
+
+
 
                 var editor: SharedPreferences.Editor = sp.edit()
 
@@ -64,14 +132,10 @@ class FirstTimeStartedActivity : AppCompatActivity() {
                 editor.putString("userWeight", weightStr)
                 editor.putString("userAge", ageStr)
                 editor.putString("userGender", genderStr)
+                editor.putString("dailyWaterIntake", dailyWaterIntakeStr)
 
                 editor.commit()
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
-
-
-
-                // tu prebehne vypocet denneho prijmu tekutin
-
 
 
 
@@ -82,7 +146,12 @@ class FirstTimeStartedActivity : AppCompatActivity() {
                     .putBoolean("firstRun", false)
                     .commit()
 
-                super.finish()  // toto mi zavrie moju aktivitu a zapne sa activity_main.xml
+
+                backToActivityMain()
+
+                //super.finish()  // toto mi zavrie moju aktivitu a zapne sa activity_main.xml
+
+
             }
         }
     }
@@ -97,7 +166,6 @@ class FirstTimeStartedActivity : AppCompatActivity() {
                 R.id.radio_woman ->
                     if (checked) {
                         genderStr = "woman"
-                        Toast.makeText(this, "Zenaaa", Toast.LENGTH_SHORT).show()
                     }
                 R.id.radio_man ->
                     if (checked) {
@@ -115,7 +183,10 @@ class FirstTimeStartedActivity : AppCompatActivity() {
 
 
 
-
+    private fun backToActivityMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
 
 
 

@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="190dp"
-        android:layout_height="235dp"
+        android:layout_width="163dp"
+        android:layout_height="164dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.542"
@@ -36,7 +36,7 @@
         app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
@@ -60,8 +60,8 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="319dp"
+        android:layout_width="408dp"
+        android:layout_height="370dp"
         android:layout_marginTop="1dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,6 +71,37 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
         app:layout_constraintVertical_bias="0.038">
 
+
+        <TextView
+            android:id="@+id/wakeUpTimeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="140dp"
+            android:paddingBottom="8dp"
+            android:text="@string/wakeUpTime"
+            android:textColor="@color/MediumBlue"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/weightTextView2"
+            app:layout_constraintHorizontal_bias="0.524"
+            app:layout_constraintStart_toStartOf="@+id/weightTextView2"
+            app:layout_constraintTop_toBottomOf="@+id/weightTextView2"
+            app:layout_constraintVertical_bias="0.787" />
+
+        <TextView
+            android:id="@+id/wakeUpTimeTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="84dp"
+            android:paddingBottom="8dp"
+            android:text="@string/sleepTime"
+            android:textColor="@color/MediumBlue"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/wakeUpTimeTextView"
+            app:layout_constraintStart_toStartOf="@+id/wakeUpTimeTextView"
+            app:layout_constraintTop_toBottomOf="@+id/wakeUpTimeTextView"
+            app:layout_constraintVertical_bias="0.777" />
 
         <RadioGroup
             android:id="@+id/radioGroupID"
@@ -105,19 +136,20 @@
 
 
             <RadioButton
-                android:id="@+id/radio_woman"
+                android:id="@+id/radio_man"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onRadioButtonClicked"
-                android:text="@string/woman" />
+                android:checked="true"
+                android:text="@string/man" />
 
             <RadioButton
-                android:id="@+id/radio_man"
+                android:id="@+id/radio_woman"
                 android:layout_width="75dp"
                 android:layout_height="48dp"
                 android:minHeight="48dp"
                 android:onClick="onRadioButtonClicked"
-                android:text="@string/man" />
+                android:text="@string/woman" />
         </RadioGroup>
 
 
@@ -129,19 +161,19 @@
             android:layout_alignParentBottom="true"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="92dp"
+            android:ems="3"
             android:hint="Name"
+            android:maxLength="10"
             android:minWidth="48dp"
             android:minHeight="48dp"
+            android:singleLine="true"
             android:textSize="15dp"
             app:layout_constraintBottom_toTopOf="@+id/weightTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.403"
             app:layout_constraintStart_toEndOf="@+id/radioGroupID"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            android:singleLine="true"
-            android:maxLength="10"
-            android:ems="3"/>
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/userSurnameEditText"
@@ -149,96 +181,132 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="52dp"
+            android:layout_marginStart="40dp"
+            android:ems="4"
             android:hint="Surname"
             android:minHeight="48dp"
+            android:singleLine="true"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="@+id/userNameEditText"
             app:layout_constraintStart_toEndOf="@+id/userNameEditText"
             app:layout_constraintTop_toTopOf="@+id/userNameEditText"
-            app:layout_constraintVertical_bias="0.0"
-            android:singleLine="true"
-            android:ems="3"/>
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/weightTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="196dp"
+            android:layout_marginBottom="244dp"
             android:paddingBottom="8dp"
             android:text="@string/weightChooseTextView"
             android:textColor="@color/MediumBlue"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/userNameEditText"
-            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintHorizontal_bias="0.563"
             app:layout_constraintStart_toStartOf="@+id/userNameEditText" />
 
         <TextView
             android:id="@+id/weightTextView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="156dp"
+            android:layout_marginBottom="200dp"
             android:paddingBottom="8dp"
             android:text="@string/ageUser"
             android:textColor="@color/MediumBlue"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/weightTextView"
-            app:layout_constraintHorizontal_bias="0.531"
+            app:layout_constraintHorizontal_bias="0.544"
             app:layout_constraintStart_toStartOf="@+id/weightTextView" />
 
         <EditText
             android:id="@+id/weightEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="196dp"
+            android:layout_marginBottom="244dp"
+            android:ems="3"
             android:hint="150"
             android:inputType="numberDecimal"
             android:minWidth="48dp"
             android:minHeight="48dp"
+            android:singleLine="true"
+            android:textAlignment="center"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/userSurnameEditText"
-            app:layout_constraintHorizontal_bias="0.368"
-            app:layout_constraintStart_toStartOf="@+id/userSurnameEditText"
-            android:textAlignment="center"
-            android:singleLine="true"
-            android:ems="3"/>
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/userSurnameEditText" />
 
         <EditText
             android:id="@+id/ageEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="148dp"
+            android:layout_marginBottom="196dp"
+            android:ems="3"
             android:hint="48"
             android:inputType="numberDecimal"
             android:minWidth="48dp"
             android:minHeight="48dp"
+            android:singleLine="true"
+            android:textAlignment="center"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/weightEditText"
-            app:layout_constraintHorizontal_bias="0.368"
-            app:layout_constraintStart_toStartOf="@+id/weightEditText"
-            android:textAlignment="center"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/weightEditText" />
+
+        <EditText
+            android:id="@+id/wakeUpTimeEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="136dp"
+            android:ems="3"
+            android:hint="5"
+            android:inputType="number"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
             android:singleLine="true"
-            android:ems="3"/>
+            android:textAlignment="center"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/ageEditText"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/ageEditText"
+            />
+
+        <EditText
+            android:id="@+id/sleepTimeEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="88dp"
+            android:ems="3"
+            android:hint="22"
+            android:inputType="numberDecimal"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/wakeUpTimeEditText"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/wakeUpTimeEditText" />
 
         <ImageView
             android:id="@+id/profileImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
-            android:layout_marginStart="28dp"
             android:layout_marginBottom="28dp"
             android:padding="5dp"
             android:src="@drawable/ic_baseline_image_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/chooseIMGBtn"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.051"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioGroupID"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.081" />
 
         <Button
             android:id="@+id/chooseIMGBtn"
@@ -249,25 +317,25 @@
             android:text="Choose\nImage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.391"
+            app:layout_constraintHorizontal_bias="0.098"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.749"
+            app:layout_constraintTop_toBottomOf="@+id/profileImage"
+            app:layout_constraintVertical_bias="0.466"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/confirm_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="12dp"
             android:backgroundTint="@color/Green"
             android:text="Confirm"
-            app:layout_constraintBottom_toBottomOf="@+id/chooseIMGBtn"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/chooseIMGBtn"
-            app:layout_constraintTop_toTopOf="@+id/chooseIMGBtn"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintHorizontal_bias="0.826"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sleepTimeEditText"
+            app:layout_constraintVertical_bias="0.464" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,11 @@
 package com.example.dont_forget_to_drink
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
@@ -11,7 +14,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import android.media.MediaPlayer
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             //... Display the dialog message here ...
             // Save the state
             showFirstStartWindow()
+
         }
 
 
@@ -54,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         userName = findViewById(R.id.titleBarName)
 
 
-        val userNameSP = sp.getString("userGender", "");
+        val userNameSP = sp.getString("dailyWaterIntake", "");
 
 
         userName.text = userNameSP
@@ -92,6 +96,38 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+
+
+
+
+    // Ked sa mi znova zapne tato aktivita
+
+    override fun onRestart() {
+        super.onRestart()
+        finish()
+        startActivity(intent)
+    }
+
+    // ked stlaci clovek back Button na activity main, tak sa ho to opyta ci chce naozaj skoncit aplikaciu.
+    override fun onBackPressed() {
+
+
+        val builder = androidx.appcompat.app.AlertDialog.Builder(this)
+        builder.setTitle("Exit")
+        builder.setMessage("Do you really want to exit the app?")
+        //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
+
+        builder.setPositiveButton("Yes") { dialog, which ->
+            val intent = Intent(Intent.ACTION_MAIN)
+            intent.addCategory(Intent.CATEGORY_HOME)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        }
+        builder.setNegativeButton("No") { dialog, which ->
+        }
+        builder.show()
+
+    }
 
 
 
