@@ -11,4 +11,5 @@
     <string name="woman">Woman</string>
     <string name="choose_gender">Choose gender:</string>
     <string name="weightChooseTextView">Your Weight [kg]:</string>
+    <string name="ageUser">Age:</string>
 </resources>

@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import android.media.MediaPlayer
-import android.view.View
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,18 +28,15 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE)
-        playSound()
+        sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE) // pomocou tohoto si ukladam do SharedPreferences udaje o pouzivatelovi
+
+        playSound() // zapne mi hudbu
 
 
         val firstRun = sp.getBoolean("firstRun", true)
         if (firstRun) {
             //... Display the dialog message here ...
             // Save the state
-            getSharedPreferences("MyUserPrefs", MODE_PRIVATE)
-                .edit()
-                .putBoolean("firstRun", false)
-                .commit()
             showFirstStartWindow()
         }
 
@@ -58,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         userName = findViewById(R.id.titleBarName)
 
 
-        val userNameSP = sp.getString("userName", "");
+        val userNameSP = sp.getString("userGender", "");
 
 
         userName.text = userNameSP
@@ -133,5 +129,15 @@ class MainActivity : AppCompatActivity() {
             mMediaPlayer!!.release()
             mMediaPlayer = null
         }
+    }
+
+    // ked znova spustim appku tak sa mi nanovo spusti hudba
+    override fun onResume() {
+        super.onResume()
+        if (mMediaPlayer == null) {
+            mMediaPlayer = MediaPlayer.create(this, R.raw.background_music)
+            mMediaPlayer!!.isLooping = true
+            mMediaPlayer!!.start()
+        } else mMediaPlayer!!.start()
     }
 }
