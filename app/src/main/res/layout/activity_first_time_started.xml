@@ -145,7 +145,7 @@
 
             <RadioButton
                 android:id="@+id/radio_woman"
-                android:layout_width="75dp"
+                android:layout_width="80dp"
                 android:layout_height="48dp"
                 android:minHeight="48dp"
                 android:onClick="onRadioButtonClicked"
