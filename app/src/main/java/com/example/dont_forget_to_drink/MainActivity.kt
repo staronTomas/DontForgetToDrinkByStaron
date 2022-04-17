@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var userName: TextView
     private var mMediaPlayer: MediaPlayer? = null
 
-    private var asdas: Int = 0
-
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
