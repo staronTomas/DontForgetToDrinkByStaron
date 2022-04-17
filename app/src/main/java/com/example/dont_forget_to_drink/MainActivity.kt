@@ -1,13 +1,16 @@
 package com.example.dont_forget_to_drink
 
-import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -23,29 +26,46 @@ class MainActivity : AppCompatActivity() {
     private lateinit var userName: TextView
     private var mMediaPlayer: MediaPlayer? = null
 
+    var myDialog: Dialog? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
 
         sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE) // pomocou tohoto si ukladam do SharedPreferences udaje o pouzivatelovi
 
         playSound() // zapne mi hudbu
 
+        isStartedFirstTime() // tato metoda sa pozrie nato či pouzivatel uz mal zapnutu appku a ak nie tak vyplni zakladne udaje o sebe pre chod aplikacie
 
+        ShowSideMenu() // metoda ktora sa stara o chod bocneho menu
+
+
+    // KOD pre zmenu cup size
+
+        myDialog = Dialog(this);
+
+        val btn_click_me = findViewById(R.id.changeCupSizeButton) as Button
+        btn_click_me.setOnClickListener {
+            showChangeSizePopUp(this)
+        }
+
+
+    }
+
+
+    fun isStartedFirstTime() {
         val firstRun = sp.getBoolean("firstRun", true)
         if (firstRun) {
             //... Display the dialog message here ...
             // Save the state
-            showFirstStartWindow()
-
+            val intent = Intent(this, FirstTimeStartedActivity::class.java)
+            startActivity(intent)
         }
+    }
 
 
-
+    fun ShowSideMenu() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
         val navView: NavigationView = findViewById(R.id.nav_view)
 
@@ -73,19 +93,27 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_rate_us -> Toast.makeText(applicationContext, "Clicked Rate us", Toast.LENGTH_SHORT).show()
 
             }
-
             true
         }
-
-
-
-
     }
 
-    private fun showFirstStartWindow() {
-        val intent = Intent(this, FirstTimeStartedActivity::class.java)
-        startActivity(intent)
+
+
+
+    fun showChangeSizePopUp(v: MainActivity) {
+        val txtclose: TextView
+        myDialog?.setContentView(R.layout.change_cup_size_pop_up)
+        txtclose = myDialog?.findViewById(R.id.txtclose)!!
+        txtclose.text = "X"
+        txtclose.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                myDialog!!.dismiss()
+            }
+        })
+        myDialog?.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        myDialog?.show()
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 

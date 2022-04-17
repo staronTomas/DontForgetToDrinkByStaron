@@ -148,4 +148,13 @@
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
     <color name="underline">#BDB8B8</color>
+
+
+    <!-- farby pre popup change cup size -->
+    <color name="colorPrimary">#3f51B5</color>
+    <color name="colorPrimaryDark">#2f333f</color>
+    <color name="bluelight">#49acd5</color>
+    <color name="green">#45bc62</color>
+    <color name="orange">#eaad43</color>
+    <color name="colorAccent">#FF4081</color>
 </resources>
