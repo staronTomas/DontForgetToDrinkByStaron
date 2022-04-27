@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="350dp"
     android:layout_height="475dp"
@@ -20,97 +22,86 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:src="@drawable/photo"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Elina Grofild"
+            android:text="Change your cup size"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Montreal,Canada"
-            android:textColor="@color/white"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            android:textSize="25dp"/>
     </LinearLayout>
+
     <LinearLayout
         android:layout_marginTop="15dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
-            android:background="@color/orange"
             android:gravity="center"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="100dp">
+            android:layout_height="120dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="150"
-                android:textSize="18sp"
-                android:textColor="@color/white"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Followers"
-                android:textSize="18sp"
-                android:textColor="@color/white"/>
+            <ImageButton
+                android:id="@+id/littleCupSizeImgBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/little_cup"
+                android:contentDescription="@string/littleCupSize"/>
         </LinearLayout>
         <LinearLayout
-            android:background="@color/green"
             android:gravity="center"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="100dp">
+            android:layout_height="120dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="19"
-                android:textSize="18sp"
-                android:textColor="@color/white"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cities"
-                android:textSize="18sp"
-                android:textColor="@color/white"/>
+            <ImageButton
+                android:id="@+id/mediumCupSizeImgBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/medium_cup"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:contentDescription="@string/mediumCupSize"/>
         </LinearLayout>
         <LinearLayout
-            android:background="@color/bluelight"
             android:gravity="center"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="100dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="50"
-                android:textSize="18sp"
-                android:textColor="@color/white"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Posts"
-                android:textSize="18sp"
-                android:textColor="@color/white"/>
+            android:layout_height="120dp">
+            <ImageButton
+                android:id="@+id/largeCupSizeImgBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/large_cup"
+                android:scaleType="centerInside"
+                android:padding="5dp"
+                android:contentDescription="@string/largeCupSize"/>
         </LinearLayout>
     </LinearLayout>
+
+    <EditText
+        android:id="@+id/usersOwnCupSizeEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="Your own cup size"
+        android:textColorHint="@color/LightGrey"
+        android:singleLine="true"
+        android:textSize="23dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="25dp"
+        android:textAlignment="center"
+        android:inputType="numberDecimal"/>
 
     <Button
         android:id="@+id/btnfollow"
@@ -120,7 +111,7 @@
         android:layout_marginTop="25dp"
         android:background="@drawable/buttonstyle"
         android:backgroundTint="@color/Black"
-        android:text="Follow Me"
+        android:text="- Change the size - "
         android:textColor="@color/AliceBlue" />
 
 </LinearLayout>

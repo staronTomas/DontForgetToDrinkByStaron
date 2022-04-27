@@ -10,9 +10,7 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -43,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         ShowSideMenu() // metoda ktora sa stara o chod bocneho menu
 
 
+
+
     // KOD pre zmenu cup size
 
         myDialog = Dialog(this);
@@ -51,6 +51,9 @@ class MainActivity : AppCompatActivity() {
         btn_click_me.setOnClickListener {
             showChangeSizePopUp(this)
         }
+
+
+
 
 
     }
@@ -114,6 +117,31 @@ class MainActivity : AppCompatActivity() {
         })
         myDialog?.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         myDialog?.show()
+
+
+
+        // get reference to ImageView
+        val littleCupImgBtn : ImageButton? = myDialog?.findViewById(R.id.littleCupSizeImgBtn)
+        // set on-click listener for ImageView
+
+        littleCupImgBtn?.setOnClickListener {
+            Toast.makeText(this@MainActivity, "You clicked on ImageView.", Toast.LENGTH_SHORT).show()
+        }
+
+        val mediumCupImgBtn : ImageButton? = myDialog?.findViewById(R.id.mediumCupSizeImgBtn)
+        // set on-click listener for ImageView
+
+        mediumCupImgBtn?.setOnClickListener {
+            Toast.makeText(this@MainActivity, "You clicked on ImageView.", Toast.LENGTH_SHORT).show()
+        }
+
+        val largeCupImgBtn : ImageButton? = myDialog?.findViewById(R.id.largeCupSizeImgBtn)
+        // set on-click listener for ImageView
+
+        largeCupImgBtn?.setOnClickListener {
+            Toast.makeText(this@MainActivity, "You clicked on ImageView.", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
 
