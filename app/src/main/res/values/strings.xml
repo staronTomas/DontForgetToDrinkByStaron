@@ -19,4 +19,5 @@
     <string name="mediumCupSize">medium cup size</string>
     <string name="largeCupSize">large cup size</string>
     <string name="littleCupSize">little cup size</string>
+    <string name="confirmWaterDrank">Confirm for drank water</string>
 </resources>

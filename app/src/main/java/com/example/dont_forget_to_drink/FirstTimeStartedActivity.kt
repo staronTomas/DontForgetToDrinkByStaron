@@ -13,6 +13,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.example.dont_forget_to_drink.databinding.ActivityFirstTimeStartedBinding
+import com.example.dont_forget_to_drink.databinding.ActivityMainBinding
 
 
 class FirstTimeStartedActivity : AppCompatActivity() {
@@ -42,23 +44,27 @@ class FirstTimeStartedActivity : AppCompatActivity() {
 
     private var mMediaPlayer: MediaPlayer? = null
 
+    lateinit var binding: ActivityFirstTimeStartedBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)  // vypne v appke nocny rezim...
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_first_time_started)
 
+        binding = ActivityFirstTimeStartedBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
 
-        name = findViewById(R.id.userNameEditText)
-        surname = findViewById(R.id.userSurnameEditText)
-        weight = findViewById(R.id.weightEditText)
-        age = findViewById(R.id.ageEditText)
-        wakeUpTime = findViewById(R.id.wakeUpTimeEditText)
-        sleepTime = findViewById(R.id.sleepTimeEditText)
+        name = binding.userNameEditText
+        surname = binding.userSurnameEditText
+        weight = binding.weightEditText
+        age = binding.ageEditText
+        wakeUpTime = binding.wakeUpTimeEditText
+        sleepTime = binding.sleepTimeEditText
 
-        val btnConfirm = findViewById(R.id.confirm_button) as Button
+        val btnConfirm = binding.confirmButton
+
 
 
         sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE)
