@@ -123,6 +123,7 @@ class MainActivity : AppCompatActivity() {
         // get reference to ImageView
         val littleCupImgBtn : ImageButton? = myDialog?.findViewById(R.id.littleCupSizeImgBtn)
         // set on-click listener for ImageView
+        //
 
         littleCupImgBtn?.setOnClickListener {
             Toast.makeText(this@MainActivity, "You clicked on ImageView.", Toast.LENGTH_SHORT).show()
