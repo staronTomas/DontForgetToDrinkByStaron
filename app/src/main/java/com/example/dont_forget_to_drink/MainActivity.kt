@@ -60,6 +60,39 @@ class MainActivity : AppCompatActivity() {
             showChangeSizePopUp(this)
         }
 
+        myDialog = Dialog(this);
+        val btnAddDrank = binding.confirmDrinkButton as ImageButton
+
+        btnAddDrank.setOnClickListener {
+            increaseDrankWater(this)
+        }
+
+    }
+
+
+    private fun increaseDrankWater(mainActivity: MainActivity) {
+
+        val builder = androidx.appcompat.app.AlertDialog.Builder(this)
+        builder.setTitle("Confirm increase of water drank")
+        builder.setMessage("Are you sure?")
+
+        builder.setPositiveButton("Yes") { dialog, which ->
+            var editor: SharedPreferences.Editor = sp.edit()
+
+            var cupSizeStr = sp.getString("cupSize", "")?.dropLast(2).toString()
+            var alreadyDrankStr = sp.getString("todayDrank", "")
+
+            var newDrankWaterAmount = (cupSizeStr.toInt() + (alreadyDrankStr?.toInt()!!)).toString()
+
+            editor.putString("todayDrank", newDrankWaterAmount)
+            editor.commit()
+
+            loadDataToMainActivity()
+        }
+        builder.setNegativeButton("No") { dialog, which ->
+        }
+        builder.show()
+
 
     }
 
@@ -106,7 +139,7 @@ class MainActivity : AppCompatActivity() {
     fun isStartedFirstTime() {
 
         var editor: SharedPreferences.Editor = sp.edit()
-        editor.putString("cupSize", "100 ml")
+        editor.putString("cupSize", "100ml")
         editor.putString("todayDrank", "0")
         editor.commit()
 
