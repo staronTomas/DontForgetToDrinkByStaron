@@ -4,14 +4,16 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.Color.WHITE
 import android.graphics.drawable.ColorDrawable
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     var myDialog: Dialog? = null
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) // vypne v appke nocny rezim...
         super.onCreate(savedInstanceState)
@@ -70,6 +73,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun increaseDrankWater(mainActivity: MainActivity) {
 
         val builder = androidx.appcompat.app.AlertDialog.Builder(this)
@@ -96,7 +100,29 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun increaseProgressBar() {
 
+
+        var progressBar = binding.waterProgressBar
+
+        if (progressBar.progress >= 100) {
+            return
+        }
+
+        var alreadyDrank = sp.getString("todayDrank", "")?.toInt()
+        var dailyWaterIntake = sp.getString("dailyWaterIntake", "")?.toInt()
+
+        var newPercentageForProgressBar = alreadyDrank!! * 100 / dailyWaterIntake!!
+
+        progressBar.setProgress(newPercentageForProgressBar, true)
+        progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+
+
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun loadDataToMainActivity() {
 
         val waterNeedToDrink= sp.getString("dailyWaterIntake", "")
@@ -130,6 +156,8 @@ class MainActivity : AppCompatActivity() {
                 myTextView.setBackgroundColor(Color.parseColor("#56aeff"))
             }
         }
+
+        increaseProgressBar()
 
 
     }
@@ -181,6 +209,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun showChangeSizePopUp(v: MainActivity) {
         val txtclose: TextView
         myDialog?.setContentView(R.layout.change_cup_size_pop_up)
