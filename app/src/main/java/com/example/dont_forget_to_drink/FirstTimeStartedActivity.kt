@@ -74,6 +74,9 @@ class FirstTimeStartedActivity : AppCompatActivity() {
 
         // tento button listener je na prvotné spustenie aplikacie, pomocou neho sa potvrdzuju udaje o pouzivatelovi, ktory bude appku pouzivat
         btnConfirm.setOnClickListener {
+
+            onConfirmSound()
+
             nameStr = name.text.toString()
             surnameStr = surname.text.toString()
             weightStr = weight.text.toString()
@@ -173,10 +176,12 @@ class FirstTimeStartedActivity : AppCompatActivity() {
             when (view.getId()) {
                 R.id.radio_woman ->
                     if (checked) {
+                        onBtnClickSound()
                         genderStr = "woman"
                     }
                 R.id.radio_man ->
                     if (checked) {
+                        onBtnClickSound()
                         genderStr = "man"
                     }
             }
@@ -242,5 +247,36 @@ class FirstTimeStartedActivity : AppCompatActivity() {
             mMediaPlayer!!.isLooping = true
             mMediaPlayer!!.start()
         } else mMediaPlayer!!.start()
+    }
+
+
+
+
+
+
+
+    private fun welcomeSound() {
+        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.welcome_sound)
+        buttonClickSound.start()
+    }
+
+    private fun onConfirmSound() {
+        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.confirm_sound)
+        buttonClickSound.start()
+    }
+
+    private fun onBtnClickSound()  {
+        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.btn_click_sound)
+        buttonClickSound.start()
+    }
+
+    private fun onSwipeSound() {
+        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.swipe_sound)
+        buttonClickSound.start()
+    }
+
+    private fun onCloseSound() {
+        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.close_sound_effect)
+        buttonClickSound.start()
     }
 }

@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         myDialog = Dialog(this);
         val btn_click_me = binding.changeCupSizeButton as Button
         btn_click_me.setOnClickListener {
+            onBtnClickSound()
             showChangeSizePopUp(this)
         }
 
@@ -67,6 +68,7 @@ class MainActivity : AppCompatActivity() {
         val btnAddDrank = binding.confirmDrinkButton as ImageButton
 
         btnAddDrank.setOnClickListener {
+            onBtnClickSound()
             increaseDrankWater(this)
         }
 
@@ -81,6 +83,8 @@ class MainActivity : AppCompatActivity() {
         builder.setMessage("Are you sure?")
 
         builder.setPositiveButton("Yes") { dialog, which ->
+            onBtnClickSound()
+
             var editor: SharedPreferences.Editor = sp.edit()
 
             var cupSizeStr = sp.getString("cupSize", "")?.dropLast(2).toString()
@@ -93,7 +97,7 @@ class MainActivity : AppCompatActivity() {
 
             loadDataToMainActivity()
         }
-        builder.setNegativeButton("No") { dialog, which ->
+        builder.setNegativeButton("No") { dialog, which -> onBtnClickSound()
         }
         builder.show()
 
@@ -165,6 +169,9 @@ class MainActivity : AppCompatActivity() {
 
 
     fun isStartedFirstTime() {
+
+        welcomeSound()
+
         val firstRun = sp.getBoolean("firstRun", true)
         if (firstRun) {
 
@@ -186,6 +193,9 @@ class MainActivity : AppCompatActivity() {
 
 
     fun ShowSideMenu() {
+
+        onSwipeSound()
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = findViewById(R.id.nav_view)
 
@@ -197,24 +207,32 @@ class MainActivity : AppCompatActivity() {
 
         navView.setNavigationItemSelectedListener {
             when(it.itemId) {
-                R.id.nav_profile ->{ Toast.makeText(applicationContext, "Clicked Profile", Toast.LENGTH_SHORT).show()
+                R.id.nav_profile ->{
+                    onBtnClickSound()
+                    val intent = Intent(this, UserProfileActivity::class.java)
+                    startActivity(intent)
                     }
                 R.id.nav_statistics -> {
+                    onBtnClickSound()
                     Toast.makeText(applicationContext, "Clicked Statistics", Toast.LENGTH_SHORT)
                         .show()
                 }
                 R.id.nav_disable_alarm -> {
+                    onBtnClickSound()
                     Toast.makeText(applicationContext, "Clicked Disable Alarm", Toast.LENGTH_SHORT)
                         .show()
                 }
                 R.id.nav_settings -> {
+                    onBtnClickSound()
                     Toast.makeText(applicationContext, "Clicked Settings", Toast.LENGTH_SHORT)
                         .show()
                 }
                 R.id.nav_share -> {
+                    onBtnClickSound()
                     Toast.makeText(applicationContext, "Clicked Share", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_rate_us -> {
+                    onBtnClickSound()
                     Toast.makeText(applicationContext, "Clicked Rate us", Toast.LENGTH_SHORT).show()
                 }
 
@@ -224,10 +242,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
     @RequiresApi(Build.VERSION_CODES.N)
     private fun showChangeSizePopUp(v: MainActivity) {
+
+        onBtnClickSound()
         val txtclose: TextView
         myDialog?.setContentView(R.layout.change_cup_size_pop_up)
         txtclose = myDialog?.findViewById(R.id.txtclose)!!
@@ -245,6 +263,7 @@ class MainActivity : AppCompatActivity() {
         val littleCupImgBtn : ImageButton? = myDialog?.findViewById(R.id.littleCupSizeImgBtn)
         littleCupImgBtn?.setOnClickListener {
 
+            onConfirmSound()
             var cupSize = "100ml";
             var editor: SharedPreferences.Editor = sp.edit()
             editor.putString("cupSize", cupSize)
@@ -259,6 +278,7 @@ class MainActivity : AppCompatActivity() {
         val mediumCupImgBtn : ImageButton? = myDialog?.findViewById(R.id.mediumCupSizeImgBtn)
         mediumCupImgBtn?.setOnClickListener {
 
+            onConfirmSound()
             var cupSize = "200ml";
             var editor: SharedPreferences.Editor = sp.edit()
             editor.putString("cupSize", cupSize)
@@ -274,6 +294,7 @@ class MainActivity : AppCompatActivity() {
         // set on-click listener for ImageView
         largeCupImgBtn?.setOnClickListener {
 
+            onConfirmSound()
             var cupSize = "500ml";
             var editor: SharedPreferences.Editor = sp.edit()
             editor.putString("cupSize", cupSize)
@@ -281,6 +302,7 @@ class MainActivity : AppCompatActivity() {
 
             loadDataToMainActivity()
 
+            onConfirmSound()
             Toast.makeText(applicationContext, "Cup size was set to 500ml. :)", Toast.LENGTH_SHORT).show()
             myDialog!!.dismiss()
         }
@@ -291,6 +313,7 @@ class MainActivity : AppCompatActivity() {
         // set on-click listener for ImageView
         changeCupSizeBtn?.setOnClickListener {
 
+            onConfirmSound()
             val ownSize : EditText? = myDialog?.findViewById(R.id.usersOwnCupSizeEditText)
             val ownSizeStr = ownSize?.text.toString()
             var cupSize = ownSizeStr + "ml";
@@ -300,6 +323,7 @@ class MainActivity : AppCompatActivity() {
             editor.commit()
 
             loadDataToMainActivity()
+
 
             Toast.makeText(applicationContext, "Cup size was set to your own size. :)", Toast.LENGTH_SHORT).show()
             myDialog!!.dismiss()
@@ -340,6 +364,7 @@ class MainActivity : AppCompatActivity() {
         //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
 
         builder.setPositiveButton("Yes") { dialog, which ->
+            onCloseSound()
             val intent = Intent(Intent.ACTION_MAIN)
             intent.addCategory(Intent.CATEGORY_HOME)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -397,5 +422,31 @@ class MainActivity : AppCompatActivity() {
             mMediaPlayer!!.isLooping = true
             mMediaPlayer!!.start()
         } else mMediaPlayer!!.start()
+    }
+
+
+    private fun welcomeSound() {
+        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.welcome_sound)
+        buttonClickSound.start()
+    }
+
+    private fun onConfirmSound() {
+        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.confirm_sound)
+        buttonClickSound.start()
+    }
+
+    private fun onBtnClickSound()  {
+        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.btn_click_sound)
+        buttonClickSound.start()
+    }
+
+    private fun onSwipeSound() {
+        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.swipe_sound)
+        buttonClickSound.start()
+    }
+
+    private fun onCloseSound() {
+        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.close_sound_effect)
+        buttonClickSound.start()
     }
 }
