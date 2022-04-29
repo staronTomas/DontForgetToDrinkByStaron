@@ -165,14 +165,17 @@ class MainActivity : AppCompatActivity() {
 
 
     fun isStartedFirstTime() {
-
-        var editor: SharedPreferences.Editor = sp.edit()
-        editor.putString("cupSize", "100ml")
-        editor.putString("todayDrank", "0")
-        editor.commit()
-
         val firstRun = sp.getBoolean("firstRun", true)
         if (firstRun) {
+
+
+            var editor: SharedPreferences.Editor = sp.edit()
+            editor.putString("cupSize", "100ml")
+            editor.putString("todayDrank", "0")
+            editor.putString("dailyWaterIntake", "1")
+
+            editor.commit()
+
             //... Display the dialog message here ...
             // Save the state
             val intent = Intent(this, FirstTimeStartedActivity::class.java)
@@ -194,12 +197,26 @@ class MainActivity : AppCompatActivity() {
 
         navView.setNavigationItemSelectedListener {
             when(it.itemId) {
-                R.id.nav_profile -> Toast.makeText(applicationContext, "Clicked Profile", Toast.LENGTH_SHORT).show()
-                R.id.nav_statistics -> Toast.makeText(applicationContext, "Clicked Statistics", Toast.LENGTH_SHORT).show()
-                R.id.nav_disable_alarm -> Toast.makeText(applicationContext, "Clicked Disable Alarm", Toast.LENGTH_SHORT).show()
-                R.id.nav_settings -> Toast.makeText(applicationContext, "Clicked Settings", Toast.LENGTH_SHORT).show()
-                R.id.nav_share -> Toast.makeText(applicationContext, "Clicked Share", Toast.LENGTH_SHORT).show()
-                R.id.nav_rate_us -> Toast.makeText(applicationContext, "Clicked Rate us", Toast.LENGTH_SHORT).show()
+                R.id.nav_profile ->{ Toast.makeText(applicationContext, "Clicked Profile", Toast.LENGTH_SHORT).show()
+                    }
+                R.id.nav_statistics -> {
+                    Toast.makeText(applicationContext, "Clicked Statistics", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                R.id.nav_disable_alarm -> {
+                    Toast.makeText(applicationContext, "Clicked Disable Alarm", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                R.id.nav_settings -> {
+                    Toast.makeText(applicationContext, "Clicked Settings", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                R.id.nav_share -> {
+                    Toast.makeText(applicationContext, "Clicked Share", Toast.LENGTH_SHORT).show()
+                }
+                R.id.nav_rate_us -> {
+                    Toast.makeText(applicationContext, "Clicked Rate us", Toast.LENGTH_SHORT).show()
+                }
 
             }
             true

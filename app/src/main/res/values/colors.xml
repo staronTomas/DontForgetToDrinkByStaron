@@ -148,7 +148,7 @@
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
     <color name="underline">#BDB8B8</color>
-
+    <color name="blueForToolbar">#0A65BC</color>
 
     <!-- farby pre popup change cup size -->
     <color name="colorPrimary">#3f51B5</color>
