@@ -20,4 +20,9 @@
     <string name="largeCupSize">large cup size</string>
     <string name="littleCupSize">little cup size</string>
     <string name="confirmWaterDrank">Confirm for drank water</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="weight">Weight</string>
+    <string name="gender">Gender</string>
+    <string name="editProfile">Edit Profile</string>
 </resources>
