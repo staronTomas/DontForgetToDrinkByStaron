@@ -13,11 +13,13 @@
         android:orientation="horizontal"
         android:id="@+id/linear_ll">
 
-        <ImageView
+        <ImageButton
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_baseline_arrow_back_24"
-            android:layout_alignParentLeft="true"/>
+            android:layout_alignParentLeft="true"
+            android:id="@+id/profileBackArrowBtn"
+            android:background="@color/white" />
 
         <TextView
             android:layout_weight="1"
@@ -32,7 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Logout"
+            android:text=""
             android:textColor="@color/blueForToolbar"
             android:layout_alignParentRight="true"
             android:textStyle="bold"

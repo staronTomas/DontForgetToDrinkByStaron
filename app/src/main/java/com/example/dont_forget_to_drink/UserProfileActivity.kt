@@ -1,9 +1,17 @@
 package com.example.dont_forget_to_drink
 
+import android.app.Dialog
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.example.dont_forget_to_drink.databinding.UserProfileActivityBinding
+
+
+lateinit var binding: UserProfileActivityBinding
+var myDialog: Dialog? = null
 
 class UserProfileActivity  : AppCompatActivity() {
 
@@ -12,8 +20,21 @@ class UserProfileActivity  : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_profile_activity)
 
+        binding = UserProfileActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+        myDialog = Dialog(this);
+        val closeUserProfileBtn = findViewById<ImageButton>(R.id.profileBackArrowBtn)
+        closeUserProfileBtn.setOnClickListener {
+            onBtnClickSound()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
     }
+
 
 
 

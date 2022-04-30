@@ -11,7 +11,6 @@ import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -50,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         isStartedFirstTime() // tato metoda sa pozrie nato či pouzivatel uz mal zapnutu appku a ak nie tak vyplni zakladne udaje o sebe pre chod aplikacie
 
-        ShowSideMenu() // metoda ktora sa stara o chod bocneho menu
+        showSideMenu() // metoda ktora sa stara o chod bocneho menu
 
         loadDataToMainActivity()
 
@@ -83,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         builder.setMessage("Are you sure?")
 
         builder.setPositiveButton("Yes") { dialog, which ->
-            onBtnClickSound()
+            onConfirmSound()
 
             var editor: SharedPreferences.Editor = sp.edit()
 
@@ -98,6 +97,7 @@ class MainActivity : AppCompatActivity() {
             loadDataToMainActivity()
         }
         builder.setNegativeButton("No") { dialog, which -> onBtnClickSound()
+            onBtnClickSound()
         }
         builder.show()
 
@@ -168,7 +168,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    fun isStartedFirstTime() {
+    private fun isStartedFirstTime() {
 
         welcomeSound()
 
@@ -176,12 +176,12 @@ class MainActivity : AppCompatActivity() {
         if (firstRun) {
 
 
-            var editor: SharedPreferences.Editor = sp.edit()
+            val editor: SharedPreferences.Editor = sp.edit()
             editor.putString("cupSize", "100ml")
             editor.putString("todayDrank", "0")
             editor.putString("dailyWaterIntake", "1")
 
-            editor.commit()
+            editor.apply()
 
             //... Display the dialog message here ...
             // Save the state
@@ -192,7 +192,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun ShowSideMenu() {
+    private fun showSideMenu() {
 
         onSwipeSound()
 
@@ -244,18 +244,11 @@ class MainActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun showChangeSizePopUp(v: MainActivity) {
-
-        onBtnClickSound()
-        val txtclose: TextView
         myDialog?.setContentView(R.layout.change_cup_size_pop_up)
-        txtclose = myDialog?.findViewById(R.id.txtclose)!!
-        txtclose.text = "X"
-        txtclose.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                myDialog!!.dismiss()
-            }
-        })
-        myDialog?.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val txtClose: TextView = myDialog?.findViewById(R.id.txtclose)!!
+        txtClose.text = "X"
+        txtClose.setOnClickListener { myDialog!!.dismiss() }
+        myDialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         myDialog?.show()
 
 
@@ -302,7 +295,6 @@ class MainActivity : AppCompatActivity() {
 
             loadDataToMainActivity()
 
-            onConfirmSound()
             Toast.makeText(applicationContext, "Cup size was set to 500ml. :)", Toast.LENGTH_SHORT).show()
             myDialog!!.dismiss()
         }

@@ -21,6 +21,7 @@
             android:src="@drawable/prof_pic2" />
 
         <TextView
+            android:id="@+id/nameSurname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -36,6 +37,7 @@
             android:background="@color/blueForToolbar" />
 
     </LinearLayout>
+
 
 
     <LinearLayout
@@ -334,14 +336,29 @@
         <TextView
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:background="@drawable/bg_btn"
+            android:background="@drawable/bg_btn_blue"
             android:text="@string/editProfile"
             android:gravity="center"
             android:textColor="@color/blueForToolbar"
             android:textSize="18dp"
-            android:drawableLeft="@drawable/ic_baseline_edit_24"
+            android:drawableLeft="@drawable/ic_baseline_edit_blue_24"
             android:paddingLeft="10dp"
             android:layout_marginLeft="-10dp"/>
+
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_btn_red"
+            android:text="@string/deleteProfile"
+            android:gravity="center"
+            android:textColor="@color/Red"
+            android:textSize="18dp"
+            android:drawableLeft="@drawable/ic_baseline_delete_24"
+            android:paddingLeft="10dp"
+            android:layout_marginLeft="-10dp"
+            android:layout_marginTop="15dp"
+            android:textStyle="bold"/>
 
 
     </LinearLayout>

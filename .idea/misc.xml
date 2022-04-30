@@ -4,9 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/drawable/bg_btn.xml" value="0.3485" />
+        <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/drawable/bg_btn_blue.xml" value="0.3485" />
+        <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/drawable/bg_btn_red.xml" value="0.3485" />
         <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/drawable/buttonstyle.xml" value="0.2895" />
         <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/drawable/circlebackground.xml" value="0.2895" />
         <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/drawable/ic_baseline_alarm_off_24.xml" value="0.296" />
+        <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.3485" />
+        <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/drawable/ic_baseline_edit_blue_24.xml" value="0.3485" />
         <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3435" />
         <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/drawable/mybutton.xml" value="0.3435" />
         <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/drawable/rounded_corner.xml" value="0.3435" />
@@ -16,7 +20,7 @@
         <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/layout/fragment_cup_size.xml" value="0.2921875" />
         <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/layout/nav_header.xml" value="0.3625" />
         <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/layout/toolbar.xml" value="0.4624098867147271" />
-        <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/layout/user_profile_activity.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/layout/user_profile_activity.xml" value="0.33" />
         <entry key="..\:/Users/Tomas/AndroidStudioProjects/Dont_Forget_To_Drink/app/src/main/res/menu/nav_menu.xml" value="0.3625" />
       </map>
     </option>
