@@ -26,4 +26,5 @@
     <string name="gender">Gender</string>
     <string name="editProfile">Edit Profile</string>
     <string name="deleteProfile">Delete profile</string>
+    <string name="scrollDown">Scroll down</string>
 </resources>

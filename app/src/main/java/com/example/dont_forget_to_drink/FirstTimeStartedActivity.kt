@@ -142,6 +142,8 @@ class FirstTimeStartedActivity : AppCompatActivity() {
                 editor.putString("userAge", ageStr)
                 editor.putString("userGender", genderStr)
                 editor.putString("dailyWaterIntake", dailyWaterIntakeStr)
+                editor.putString("wakeUpTime", wakeUpTimeStr)
+                editor.putString("sleepTime", sleepTimeStr)
 
                 editor.commit()
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
