@@ -9,7 +9,7 @@
     <string name="WelcomeTitle">Welcome to this App :)</string>
     <string name="man">Man</string>
     <string name="woman">Woman</string>
-    <string name="choose_gender">Choose gender:</string>
+    <string name="choose_gender">Choose gender</string>
     <string name="weightChooseTextView">Your Weight [kg]:</string>
     <string name="ageUser">Age:</string>
     <string name="wakeUpTime">Wake up time:</string>
@@ -27,4 +27,5 @@
     <string name="editProfile">Edit Profile</string>
     <string name="deleteProfile">Delete profile</string>
     <string name="scrollDown">Scroll down</string>
+    <string name="DailyWater">Daily amount of water:</string>
 </resources>

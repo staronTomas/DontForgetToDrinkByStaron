@@ -11,6 +11,7 @@ import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -441,4 +442,6 @@ class MainActivity : AppCompatActivity() {
         val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.close_sound_effect)
         buttonClickSound.start()
     }
+
+
 }

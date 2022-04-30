@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".UserProfileActivity">
+    tools:context=".EditProfile">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar2"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -74,24 +74,14 @@
                     android:textSize="18dp"
                     android:layout_marginLeft="5dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="JohnTextView"
-                    android:layout_marginLeft="25dp"
-                    android:textSize="18dp"
-                    android:textColor="@color/DimGray"
-                    android:id="@+id/nameTextView"/>
-
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="JohnEditText"
                     android:layout_marginLeft="25dp"
                     android:textSize="18dp"
                     android:textColor="@color/DimGray"
-                    android:id="@+id/nameEditText"
-                    android:visibility="invisible"/>
+                    android:id="@+id/editName"/>
+
 
             </LinearLayout>
 
@@ -126,14 +116,14 @@
                     android:textSize="18dp"
                     android:layout_marginLeft="5dp"/>
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Johnsson"
+                    android:text=""
                     android:layout_marginLeft="25dp"
                     android:textSize="18dp"
                     android:textColor="@color/DimGray"
-                    android:id="@+id/surnameTxtView"/>
+                    android:id="@+id/editSurname"/>
 
             </LinearLayout>
 
@@ -168,14 +158,15 @@
                     android:textSize="18dp"
                     android:layout_marginLeft="5dp"/>
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="35"
+                    android:text=""
                     android:layout_marginLeft="25dp"
                     android:textSize="18dp"
                     android:textColor="@color/DimGray"
-                    android:id="@+id/ageTextView"/>
+                    android:id="@+id/editAge"
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -210,14 +201,15 @@
                     android:textSize="18dp"
                     android:layout_marginLeft="5dp"/>
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="112 kg"
+                    android:text=""
                     android:layout_marginLeft="25dp"
                     android:textSize="18dp"
                     android:textColor="@color/DimGray"
-                    android:id="@+id/weightTextView"/>
+                    android:id="@+id/editWeight"
+                    android:inputType="numberDecimal"/>
 
             </LinearLayout>
 
@@ -232,34 +224,46 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal"
                 android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center_vertical">
+                android:paddingRight="15dp">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/gender_img"/>
+                    android:src="@drawable/gender_img" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
                     android:text="@string/gender"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="18dp"
-                    android:layout_marginLeft="5dp"/>
+                    android:textStyle="bold" />
 
-                <TextView
+                <RadioGroup
+                    android:id="@+id/editGender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Man"
-                    android:layout_marginLeft="25dp"
-                    android:textSize="18dp"
-                    android:textColor="@color/DimGray"
-                    android:id="@+id/genderTextView"/>
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_man"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/man" />
+
+                    <RadioButton
+                        android:id="@+id/radio_woman"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/woman" />
+                </RadioGroup>
 
             </LinearLayout>
 
@@ -294,12 +298,13 @@
                     android:textSize="18dp"
                     android:layout_marginLeft="5dp"/>
 
-                <TextView
-                    android:id="@+id/wakeUpTimeTextView"
+                <EditText
+                    android:id="@+id/editWakeUpTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
-                    android:text="5:00"
+                    android:inputType="numberDecimal"
+                    android:text=""
                     android:textColor="@color/DimGray"
                     android:textSize="18dp" />
 
@@ -337,14 +342,15 @@
                     android:textSize="18dp"
                     android:layout_marginLeft="5dp"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/editSleepTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="22:00"
                     android:layout_marginLeft="25dp"
-                    android:textSize="18dp"
+                    android:inputType="numberDecimal"
+                    android:text=""
                     android:textColor="@color/DimGray"
-                    android:id="@+id/sleepTimeTextView"/>
+                    android:textSize="18dp" />
             </LinearLayout>
 
 
@@ -381,13 +387,13 @@
                     android:layout_marginLeft="5dp"/>
 
                 <TextView
+                    android:id="@+id/dailyAmountOfWaterTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2500 ml"
                     android:layout_marginLeft="25dp"
-                    android:textSize="18dp"
+                    android:text=""
                     android:textColor="@color/DimGray"
-                    android:id="@+id/dailyAmountOfWaterTextView"/>
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <View
