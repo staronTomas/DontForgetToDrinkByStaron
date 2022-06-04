@@ -28,4 +28,5 @@
     <string name="deleteProfile">Delete profile</string>
     <string name="scrollDown">Scroll down</string>
     <string name="DailyWater">Daily amount of water:</string>
+    <string name="confirmEditProfile">Confirm changes</string>
 </resources>

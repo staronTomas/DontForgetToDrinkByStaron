@@ -22,7 +22,7 @@
             android:src="@drawable/prof_pic" />
 
         <TextView
-            android:id="@+id/nameSurname"
+            android:id="@+id/titleNameSurname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -410,37 +410,26 @@
                 android:orientation="horizontal"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center_vertical">
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center">
 
 
                 <Button
-                    android:id="@+id/editProfileButton"
+                    android:id="@+id/editProfileButtonBottom"
                     style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:drawableLeft="@drawable/ic_baseline_edit_blue_24"
-                    android:text="@string/editProfile"
-                    android:textColor="@color/blueForToolbar"
-                    app:layout_constraintEnd_toStartOf="@+id/deleteProfileButton"
-                    app:layout_constraintHorizontal_bias="0.213"
+                    android:background="@drawable/bg_btn_green"
+                    android:drawableLeft="@drawable/ic_baseline_edit_green_24"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="10dp"
+                    android:text="@string/confirmEditProfile"
+                    android:textColor="@color/Green"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/deleteProfileButton"
-                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:drawableLeft="@drawable/ic_baseline_delete_24"
-                    android:text="@string/deleteProfile"
-                    android:textColor="@color/Red"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/editProfileButton"
-                    app:layout_constraintVertical_bias="0.0" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

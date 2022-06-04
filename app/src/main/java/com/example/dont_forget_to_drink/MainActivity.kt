@@ -1,6 +1,6 @@
 package com.example.dont_forget_to_drink
 
-import android.app.Dialog
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -17,7 +17,10 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.dont_forget_to_drink.App.Companion.CHANNEL_1_ID
 import com.example.dont_forget_to_drink.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 
@@ -38,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) // vypne v appke nocny rezim...
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -220,8 +224,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_disable_alarm -> {
                     onBtnClickSound()
-                    Toast.makeText(applicationContext, "Clicked Disable Alarm", Toast.LENGTH_SHORT)
+                    Toast.makeText(applicationContext, "Notification set on every hour", Toast.LENGTH_SHORT)
                         .show()
+                    sendOnChannel1()
                 }
                 R.id.nav_settings -> {
                     onBtnClickSound()
@@ -373,10 +378,41 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    // Notifications
+
+    private fun sendOnChannel1(){
+        var editTextTitle : EditText
+       var editTextMessage : EditText
+
+        var notificationManager : NotificationManagerCompat = NotificationManagerCompat.from(this)
+
+        val title = "Title water reminder"
+        val message = "Drink water plsss"
+
+        val notification: Notification = NotificationCompat.Builder(this, CHANNEL_1_ID)
+            .setSmallIcon(R.drawable.ic_baseline_alarm_on_24)
+            .setContentTitle(title)
+            .setContentText(message)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+            .build()
+
+        notificationManager.notify(1, notification)
+    }
+
+
+
+
+
+
+
+
+
+
     // MUSIC PLAYER
 
 
-    fun playSound() {
+    private fun playSound() {
         if (mMediaPlayer == null) {
             mMediaPlayer = MediaPlayer.create(this, R.raw.background_music)
             mMediaPlayer!!.isLooping = true
@@ -385,12 +421,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     // 2. Pause playback
-    fun pauseSound() {
+    private fun pauseSound() {
         if (mMediaPlayer?.isPlaying == true) mMediaPlayer?.pause()
     }
 
     // 3. Stops playback
-    fun stopSound() {
+    private fun stopSound() {
         if (mMediaPlayer != null) {
             mMediaPlayer!!.stop()
             mMediaPlayer!!.release()

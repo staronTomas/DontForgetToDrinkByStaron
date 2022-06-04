@@ -43,7 +43,6 @@ class UserProfileActivity  : AppCompatActivity() {
 
         val editBtn = binding.editProfileButton as Button
         editBtn.setOnClickListener {
-            onBtnClickSound()
             editProfileOnCLick()
         }
 
@@ -62,6 +61,7 @@ class UserProfileActivity  : AppCompatActivity() {
         onBtnClickSound()
         val intent = Intent(this, EditProfile::class.java)
         startActivity(intent)
+        finish()
     }
 
 
