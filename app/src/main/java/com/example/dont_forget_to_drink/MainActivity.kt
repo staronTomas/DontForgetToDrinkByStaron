@@ -382,7 +382,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun sendOnChannel1(){
         var editTextTitle : EditText
-       var editTextMessage : EditText
+        var editTextMessage : EditText
 
         var notificationManager : NotificationManagerCompat = NotificationManagerCompat.from(this)
 
