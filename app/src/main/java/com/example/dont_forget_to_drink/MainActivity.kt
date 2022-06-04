@@ -381,6 +381,10 @@ class MainActivity : AppCompatActivity() {
     // Notifications
 
     private fun sendOnChannel1(){
+
+        var asd = "sadas"
+
+
         var editTextTitle : EditText
         var editTextMessage : EditText
 
