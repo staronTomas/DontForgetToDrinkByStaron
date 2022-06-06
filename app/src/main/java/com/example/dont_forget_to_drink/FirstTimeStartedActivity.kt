@@ -63,8 +63,6 @@ class FirstTimeStartedActivity : AppCompatActivity() {
 
         val btnConfirm = binding.confirmButton
 
-
-
         sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE)
 
         playSound()
@@ -159,8 +157,6 @@ class FirstTimeStartedActivity : AppCompatActivity() {
 
 
                 backToActivityMain()
-
-                //super.finish()  // toto mi zavrie moju aktivitu a zapne sa activity_main.xml
 
 
             }

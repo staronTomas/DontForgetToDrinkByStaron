@@ -208,7 +208,6 @@ class MainActivity : AppCompatActivity() {
         val firstRun = sp.getBoolean("firstRun", true)
         if (firstRun) {
 
-
             val editor: SharedPreferences.Editor = sp.edit()
             editor.putString("cupSize", "100ml")
             editor.putString("todayDrank", "0")
