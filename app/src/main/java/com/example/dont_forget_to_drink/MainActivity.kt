@@ -11,7 +11,6 @@ import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -20,9 +19,11 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.dont_forget_to_drink.App.Companion.CHANNEL_1_ID
+import androidx.work.*
 import com.example.dont_forget_to_drink.databinding.ActivityMainBinding
+import com.google.android.material.bottomsheet.BottomSheetBehavior.from
 import com.google.android.material.navigation.NavigationView
+import java.util.concurrent.TimeUnit
 
 
 class MainActivity : AppCompatActivity() {
@@ -76,7 +77,34 @@ class MainActivity : AppCompatActivity() {
             increaseDrankWater(this)
         }
 
+        myWorkManagerFun()
+
     }
+
+    private fun myWorkManagerFun() {
+        val constraints = Constraints.Builder()
+            .setRequiresCharging(false)
+            .setRequiredNetworkType(NetworkType.NOT_REQUIRED)
+            .setRequiresCharging(false)
+            .setRequiresBatteryNotLow(false)
+            .build()
+
+        val myRequest = PeriodicWorkRequest.Builder(
+            MyWorkManager::class.java,
+            60,
+            TimeUnit.MINUTES
+        ).setConstraints(constraints)
+            .build()
+
+        WorkManager.getInstance(this)
+            .enqueueUniquePeriodicWork(
+                "my_id",
+                ExistingPeriodicWorkPolicy.KEEP,
+                myRequest
+            )
+    }
+
+
 
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -226,7 +254,6 @@ class MainActivity : AppCompatActivity() {
                     onBtnClickSound()
                     Toast.makeText(applicationContext, "Notification set on every hour", Toast.LENGTH_SHORT)
                         .show()
-                    sendOnChannel1()
                 }
                 R.id.nav_settings -> {
                     onBtnClickSound()
@@ -326,8 +353,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, "Cup size was set to your own size. :)", Toast.LENGTH_SHORT).show()
             myDialog!!.dismiss()
         }
-
-
     }
 
 
@@ -339,10 +364,6 @@ class MainActivity : AppCompatActivity() {
 
         return super.onOptionsItemSelected(item)
     }
-
-
-
-
 
     // Ked sa mi znova zapne tato aktivita
 
@@ -373,45 +394,6 @@ class MainActivity : AppCompatActivity() {
         builder.show()
 
     }
-
-
-//
-
-
-    // Notifications
-
-    private fun sendOnChannel1(){
-
-        var asd = "sadas"
-
-
-        var editTextTitle : EditText
-        var editTextMessage : EditText
-
-        var notificationManager : NotificationManagerCompat = NotificationManagerCompat.from(this)
-
-        val title = "Title water reminder"
-        val message = "Drink water plsss"
-
-        val notification: Notification = NotificationCompat.Builder(this, CHANNEL_1_ID)
-            .setSmallIcon(R.drawable.ic_baseline_alarm_on_24)
-            .setContentTitle(title)
-            .setContentText(message)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-            .build()
-
-        notificationManager.notify(1, notification)
-    }
-
-
-
-
-
-
-
-
-
 
     // MUSIC PLAYER
 
