@@ -1,6 +1,8 @@
 package com.example.dont_forget_to_drink
 
+import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
@@ -49,6 +51,15 @@ class EditProfile : AppCompatActivity() {
         editProfileButton2.setOnClickListener {
             onBtnClickSound()
             alertChangeProfileDetails()
+        }
+
+        myDialog = Dialog(this);
+        val closeUserProfileBtn = findViewById<ImageButton>(R.id.profileBackArrowBtn)
+        closeUserProfileBtn.setOnClickListener {
+            onBtnClickSound()
+            val intent = Intent(this, UserProfileActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
     }
@@ -155,6 +166,10 @@ class EditProfile : AppCompatActivity() {
 
             super.closeContextMenu()
             finish()
+
+
+
+
         }
 
     }
