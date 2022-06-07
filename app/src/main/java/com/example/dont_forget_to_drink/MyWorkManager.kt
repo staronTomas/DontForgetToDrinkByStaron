@@ -25,7 +25,7 @@ class MyWorkManager(context: Context, workerParameters: WorkerParameters) :
 
 
 
-
+    // metoda ktorou vykonavam danu pracu
     override fun doWork(): Result {
         Log.d("do work success", "doWork: Success function called")
 
@@ -36,6 +36,7 @@ class MyWorkManager(context: Context, workerParameters: WorkerParameters) :
 
 
 
+    // metoda ktora mi umoznuje zobrazovať notifikacie kazdu hodinu
     private fun showNotification() {
 
         val intent = Intent(applicationContext, MainActivity::class.java).apply {

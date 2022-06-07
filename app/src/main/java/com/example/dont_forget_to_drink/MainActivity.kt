@@ -37,6 +37,8 @@ class MainActivity : AppCompatActivity() {
 
     var myDialog: Dialog? = null
 
+
+    // zakladna onCreate metoda
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) // vypne v appke nocny rezim...
@@ -81,6 +83,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+    // metoda ktorou spustam WorkManagera a ako casto ma vykonat danu cinnost
     private fun myWorkManagerFun() {
         val constraints = Constraints.Builder()
             .setRequiresCharging(false)
@@ -107,6 +111,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    // metoda ktorou navysim pocet vypitej vody v dany den
     @RequiresApi(Build.VERSION_CODES.N)
     private fun increaseDrankWater(mainActivity: MainActivity) {
 
@@ -137,6 +142,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+    // metoda ktorou zvysim hodnotu progressBaru
     @RequiresApi(Build.VERSION_CODES.N)
     private fun increaseProgressBar() {
 
@@ -159,6 +166,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    // nacitanie starych dat do aktivity
     @RequiresApi(Build.VERSION_CODES.N)
     private fun loadDataToMainActivity() {
 
@@ -201,6 +209,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    // metoda ktorou pri zapnuti overujem najskor ci je aplikacia zapnuta po prvy krat a treba nacitat data o pouzivatelovi
     private fun isStartedFirstTime() {
 
         welcomeSound()
@@ -224,6 +233,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    // metoda ktora sfunkcnuje bocne menu
     private fun showSideMenu() {
 
         onSwipeSound()
@@ -274,6 +284,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    // metoda ktora mi umozni zobrazovať zmenenie velkosti pohara
     @RequiresApi(Build.VERSION_CODES.N)
     private fun showChangeSizePopUp(v: MainActivity) {
         myDialog?.setContentView(R.layout.change_cup_size_pop_up)
@@ -355,6 +366,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    // onOptions metoda
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         if(toggle.onOptionsItemSelected(item)) {
@@ -366,6 +378,7 @@ class MainActivity : AppCompatActivity() {
 
     // Ked sa mi znova zapne tato aktivita
 
+    // Restart metoda
     override fun onRestart() {
         super.onRestart()
         finish()

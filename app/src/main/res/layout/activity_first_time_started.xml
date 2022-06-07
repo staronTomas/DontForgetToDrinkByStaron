@@ -58,8 +58,8 @@
                 android:orientation="horizontal"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="center">
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -285,14 +285,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onClick="onRadioButtonClicked"
-                        android:text="@string/man" />
+                        android:text="@string/man"
+                        android:checked="true"/>
 
                     <RadioButton
                         android:id="@+id/radio_woman"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onClick="onRadioButtonClicked"
-                        android:text="@string/woman" />
+                        android:text="@string/woman"
+                        android:checked="false"/>
                 </RadioGroup>
 
             </LinearLayout>
@@ -386,6 +388,14 @@
             </LinearLayout>
 
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.6dp"
+                android:background="@color/blueForToolbar"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -406,7 +416,7 @@
                     android:drawableLeft="@drawable/ic_baseline_check_circle_24"
                     android:gravity="center_vertical"
                     android:paddingBottom="10dp"
-                    android:text="@string/confirm"
+                    android:text="@string/confirmMyInformation"
                     android:textColor="@color/Green"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"

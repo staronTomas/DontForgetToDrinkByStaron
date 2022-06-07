@@ -19,6 +19,7 @@ private lateinit var sp : SharedPreferences
 
 class UserProfileActivity  : AppCompatActivity() {
 
+    // zakladna onCreate metoda
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)  // vypne v appke nocny rezim...
         super.onCreate(savedInstanceState)
@@ -51,12 +52,10 @@ class UserProfileActivity  : AppCompatActivity() {
             onBtnClickSound()
             deleteProfileOnClick()
         }
-
-
-
-
     }
 
+
+    // metoda ktorou spustim umoznenie editovania dat o pouzivatelovi
     private fun editProfileOnCLick() {
         onBtnClickSound()
         val intent = Intent(this, EditProfile::class.java)
@@ -65,6 +64,7 @@ class UserProfileActivity  : AppCompatActivity() {
     }
 
 
+    // metoda ktorou sa vymazu vsetky data o pouzivatelovi
     private fun deleteProfileOnClick() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Warning !!!")
@@ -83,6 +83,7 @@ class UserProfileActivity  : AppCompatActivity() {
     }
 
 
+    // metoda ktorou nacitam data do aktivity
     private fun loadDataToUserProfileActivity() {
 
 
@@ -136,35 +137,8 @@ class UserProfileActivity  : AppCompatActivity() {
 
     }
 
-
-
-
-
-
-
-
-    private fun welcomeSound() {
-        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.welcome_sound)
-        buttonClickSound.start()
-    }
-
-    private fun onConfirmSound() {
-        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.confirm_sound)
-        buttonClickSound.start()
-    }
-
     private fun onBtnClickSound()  {
         val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.btn_click_sound)
-        buttonClickSound.start()
-    }
-
-    private fun onSwipeSound() {
-        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.swipe_sound)
-        buttonClickSound.start()
-    }
-
-    private fun onCloseSound() {
-        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.close_sound_effect)
         buttonClickSound.start()
     }
 

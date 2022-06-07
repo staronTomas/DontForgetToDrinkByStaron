@@ -44,6 +44,8 @@ class FirstTimeStartedActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityFirstTimeStartedBinding
 
+
+    //zakladna onCreate metoda pre vznik novej aktivity
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)  // vypne v appke nocny rezim...
         super.onCreate(savedInstanceState)
@@ -51,7 +53,6 @@ class FirstTimeStartedActivity : AppCompatActivity() {
 
         binding = ActivityFirstTimeStartedBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
 
         name = binding.userNameEditText
@@ -163,6 +164,7 @@ class FirstTimeStartedActivity : AppCompatActivity() {
         }
     }
 
+    // sfunkcnenie radio buttonov pre pohlavie
     fun onRadioButtonClicked(view: View) {
         if (view is RadioButton) {
             // Is the button now checked?
@@ -185,6 +187,7 @@ class FirstTimeStartedActivity : AppCompatActivity() {
     }
 
 
+    // metoda pre tlacidlo "späť"
     override fun onBackPressed() {
         // super.onBackPressed();
         // Not calling **super**, disables back button in current screen.
@@ -192,6 +195,7 @@ class FirstTimeStartedActivity : AppCompatActivity() {
 
 
 
+    // metoda ktorou sa vratim spat do MainActivity
     private fun backToActivityMain() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
@@ -202,8 +206,6 @@ class FirstTimeStartedActivity : AppCompatActivity() {
 
 
     // MUSIC PLAYER
-
-
     fun playSound() {
         if (mMediaPlayer == null) {
             mMediaPlayer = MediaPlayer.create(this, R.raw.first_time_activity_music)
@@ -251,28 +253,16 @@ class FirstTimeStartedActivity : AppCompatActivity() {
 
 
 
-    private fun welcomeSound() {
-        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.welcome_sound)
-        buttonClickSound.start()
-    }
-
+    // confirm sound
     private fun onConfirmSound() {
         val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.confirm_sound)
         buttonClickSound.start()
     }
 
+    // zvuk stlacenia tlacidla
     private fun onBtnClickSound()  {
         val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.btn_click_sound)
         buttonClickSound.start()
     }
 
-    private fun onSwipeSound() {
-        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.swipe_sound)
-        buttonClickSound.start()
-    }
-
-    private fun onCloseSound() {
-        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.close_sound_effect)
-        buttonClickSound.start()
-    }
 }

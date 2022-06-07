@@ -30,5 +30,7 @@
     <string name="DailyWater">Daily amount of water:</string>
     <string name="confirmEditProfile">Confirm changes</string>
     <string name="insertYourInfo">Please, tell us a little about yourself.</string>
-    <string name="confirm">Confirm</string>
+    <string name="confirmMyInformation">Confirm my information.</string>
+    <string name="surnameExample">Johnnson</string>
+    <string name="nameExample">Mark</string>
 </resources>

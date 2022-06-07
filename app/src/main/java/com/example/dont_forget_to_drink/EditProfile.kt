@@ -30,6 +30,8 @@ private lateinit var sp : SharedPreferences
 
 
 class EditProfile : AppCompatActivity() {
+
+    // zakladna onCreate metoda pre aktivitu kde sa upravuje profil použivatela
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
@@ -174,6 +176,8 @@ class EditProfile : AppCompatActivity() {
 
     }
 
+
+    // nacitaju sa stare data do hintov pre
     private fun loadOldData() {
         var userName = sp.getString("userName", "")
         var userSurname = sp.getString("userSurname", "")
@@ -232,6 +236,7 @@ class EditProfile : AppCompatActivity() {
     }
 
 
+    // sfunkcenie radio buttonov pre pohlavie
     fun onRadioButtonClicked(view: View) {
         if (view is RadioButton) {
             // Is the button now checked?
@@ -257,28 +262,17 @@ class EditProfile : AppCompatActivity() {
 
 
 
-    private fun welcomeSound() {
-        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.welcome_sound)
-        buttonClickSound.start()
-    }
 
+    // zvuk po potvrdeni
     private fun onConfirmSound() {
         val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.confirm_sound)
         buttonClickSound.start()
     }
 
+    // zvuk po kliknuti tlačidla
     private fun onBtnClickSound()  {
         val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.btn_click_sound)
         buttonClickSound.start()
     }
 
-    private fun onSwipeSound() {
-        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.swipe_sound)
-        buttonClickSound.start()
-    }
-
-    private fun onCloseSound() {
-        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.close_sound_effect)
-        buttonClickSound.start()
-    }
 }

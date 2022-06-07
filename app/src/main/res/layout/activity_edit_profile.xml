@@ -78,9 +78,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
-                    android:textSize="18dp"
                     android:textColor="@color/DimGray"
-                    android:id="@+id/editName"/>
+                    android:id="@+id/editName"
+                    android:textSize="18dp"
+                    android:ems="5"
+                    android:hint="@string/nameExample"
+                    android:maxLength="30"
+                    android:singleLine="true"/>
 
 
             </LinearLayout>
@@ -117,13 +121,18 @@
                     android:layout_marginLeft="5dp"/>
 
                 <EditText
+                    android:id="@+id/editSurname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
                     android:layout_marginLeft="25dp"
-                    android:textSize="18dp"
+                    android:ems="5"
+                    android:hint="@string/surnameExample"
+                    android:maxLength="30"
+                    android:singleLine="true"
+                    android:text=""
                     android:textColor="@color/DimGray"
-                    android:id="@+id/editSurname"/>
+                    android:textSize="18dp"
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </LinearLayout>
 
@@ -159,14 +168,16 @@
                     android:layout_marginLeft="5dp"/>
 
                 <EditText
+                    android:id="@+id/editAge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
                     android:layout_marginLeft="25dp"
-                    android:textSize="18dp"
+                    android:hint="53"
+                    android:inputType="numberDecimal"
+                    android:text=""
                     android:textColor="@color/DimGray"
-                    android:id="@+id/editAge"
-                    android:inputType="numberDecimal" />
+                    android:textSize="18dp"
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </LinearLayout>
 
@@ -202,14 +213,16 @@
                     android:layout_marginLeft="5dp"/>
 
                 <EditText
+                    android:id="@+id/editWeight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
                     android:layout_marginLeft="25dp"
-                    android:textSize="18dp"
+                    android:hint="85"
+                    android:inputType="numberDecimal"
+                    android:text=""
                     android:textColor="@color/DimGray"
-                    android:id="@+id/editWeight"
-                    android:inputType="numberDecimal"/>
+                    android:textSize="18dp"
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </LinearLayout>
 
@@ -303,10 +316,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
+                    android:hint="5"
                     android:inputType="numberDecimal"
                     android:text=""
                     android:textColor="@color/DimGray"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </LinearLayout>
 
@@ -347,10 +362,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
+                    android:hint="22"
                     android:inputType="numberDecimal"
                     android:text=""
                     android:textColor="@color/DimGray"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
 
 
