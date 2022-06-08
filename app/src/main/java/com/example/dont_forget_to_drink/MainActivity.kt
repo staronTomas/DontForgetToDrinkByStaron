@@ -330,7 +330,7 @@ class MainActivity : AppCompatActivity() {
                     var progressBar = binding.waterProgressBar
                     progressBar.setProgress(0, true)
                     progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
-
+//
 
 
                 }
