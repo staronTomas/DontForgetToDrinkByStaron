@@ -66,6 +66,7 @@ class FirstTimeStartedActivity : AppCompatActivity() {
 
         sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE)
 
+
         playSound()
 
 
@@ -143,6 +144,7 @@ class FirstTimeStartedActivity : AppCompatActivity() {
                 editor.putString("dailyWaterIntake", dailyWaterIntakeStr)
                 editor.putString("wakeUpTime", wakeUpTimeStr)
                 editor.putString("sleepTime", sleepTimeStr)
+                editor.putBoolean("notificationsOn", true)
 
                 editor.commit()
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()

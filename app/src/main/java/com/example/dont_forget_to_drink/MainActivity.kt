@@ -1,6 +1,6 @@
 package com.example.dont_forget_to_drink
 
-import android.app.*
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -14,14 +14,13 @@ import android.view.MenuItem
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
+
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.work.*
 import com.example.dont_forget_to_drink.databinding.ActivityMainBinding
-import com.google.android.material.bottomsheet.BottomSheetBehavior.from
 import com.google.android.material.navigation.NavigationView
 import java.util.concurrent.TimeUnit
 
@@ -79,6 +78,7 @@ class MainActivity : AppCompatActivity() {
             increaseDrankWater(this)
         }
 
+
         myWorkManagerFun()
 
     }
@@ -133,14 +133,52 @@ class MainActivity : AppCompatActivity() {
             editor.commit()
 
             loadDataToMainActivity()
+
+            val waterDrank = sp.getString("todayDrank", "")?.toInt()
+            val dailyWaterIntake = sp.getString("dailyWaterIntake", "")?.toInt()
+
+            if(alreadyDrankStr.toInt() < dailyWaterIntake!!) {
+                if (waterDrank != null) {
+                    if (waterDrank >= dailyWaterIntake!!) {
+                        Toast.makeText(
+                            applicationContext,
+                            sp.getString("dailyGoalCompleted", ""),
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                        showFragmentAfterCompletion(this)
+                    }
+                }
+            }
         }
-        builder.setNegativeButton("No") { dialog, which -> onBtnClickSound()
+        builder.setNegativeButton("No") { dialog, which ->
             onBtnClickSound()
         }
         builder.show()
-
-
     }
+
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun showFragmentAfterCompletion(v: MainActivity) {
+        onWinSound()
+        myDialog?.setContentView(R.layout.water_amount_drank)
+        val txtClose: TextView = myDialog?.findViewById(R.id.txtcloseCompleted)!!
+        txtClose.text = "X"
+        txtClose.setOnClickListener { myDialog!!.dismiss() }
+        myDialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        myDialog?.show()
+
+
+        val changeCupSizeBtn : Button? = myDialog?.findViewById(R.id.continueAfterCompletedWater)
+        // set on-click listener for ImageView
+        changeCupSizeBtn?.setOnClickListener {
+            onBtnClickSound()
+            myDialog!!.dismiss()
+        }
+    }
+
+
+
 
 
     // metoda ktorou zvysim hodnotu progressBaru
@@ -234,6 +272,7 @@ class MainActivity : AppCompatActivity() {
 
 
     // metoda ktora sfunkcnuje bocne menu
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun showSideMenu() {
 
         onSwipeSound()
@@ -256,26 +295,57 @@ class MainActivity : AppCompatActivity() {
                     }
                 R.id.nav_statistics -> {
                     onBtnClickSound()
-                    Toast.makeText(applicationContext, "Clicked Statistics", Toast.LENGTH_SHORT)
+                    Toast.makeText(applicationContext, "Sorry, not working yet", Toast.LENGTH_SHORT)
                         .show()
                 }
                 R.id.nav_disable_alarm -> {
                     onBtnClickSound()
-                    Toast.makeText(applicationContext, "Notification set on every hour", Toast.LENGTH_SHORT)
+                    Toast.makeText(applicationContext, "Sorry, not working yet", Toast.LENGTH_SHORT)
                         .show()
+                }
+                R.id.nav_reset_water -> {
+                    onBtnClickSound()
+
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("Warning !")
+                    builder.setMessage("Do you really want to restart the counting?")
+                    //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
+
+                    builder.setPositiveButton("Okay, reset water counter") { dialog, which ->
+                        var editor: SharedPreferences.Editor = sp.edit()
+                        editor.putString("todayDrank", "0")
+                        editor.commit()
+                        loadDataToMainActivity()
+                        Toast.makeText(applicationContext, "Water amount was Reseted", Toast.LENGTH_SHORT)
+                            .show()
+                        loadDataToMainActivity()
+                    }
+                    builder.setNegativeButton("Cancel restart.") { dialog, which ->
+                        Toast.makeText(applicationContext, "Water restart was CANCELED.", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    builder.show()
+
+
+                    var progressBar = binding.waterProgressBar
+                    progressBar.setProgress(0, true)
+                    progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+
+
+
                 }
                 R.id.nav_settings -> {
                     onBtnClickSound()
-                    Toast.makeText(applicationContext, "Clicked Settings", Toast.LENGTH_SHORT)
+                    Toast.makeText(applicationContext, "Sorry, not working yet", Toast.LENGTH_SHORT)
                         .show()
                 }
                 R.id.nav_share -> {
                     onBtnClickSound()
-                    Toast.makeText(applicationContext, "Clicked Share", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Sorry, not working yet", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_rate_us -> {
                     onBtnClickSound()
-                    Toast.makeText(applicationContext, "Clicked Rate us", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Sorry, not working yet", Toast.LENGTH_SHORT).show()
                 }
 
             }
@@ -351,17 +421,28 @@ class MainActivity : AppCompatActivity() {
             onConfirmSound()
             val ownSize : EditText? = myDialog?.findViewById(R.id.usersOwnCupSizeEditText)
             val ownSizeStr = ownSize?.text.toString()
-            var cupSize = ownSizeStr + "ml";
+            if (ownSizeStr.length > 0) {
+                if(ownSizeStr.toInt() > 0) {
+                    var cupSize = ownSizeStr + "ml";
 
-            var editor: SharedPreferences.Editor = sp.edit()
-            editor.putString("cupSize", cupSize)
-            editor.commit()
+                    var editor: SharedPreferences.Editor = sp.edit()
+                    editor.putString("cupSize", cupSize)
+                    editor.commit()
 
-            loadDataToMainActivity()
+                    loadDataToMainActivity()
 
 
-            Toast.makeText(applicationContext, "Cup size was set to your own size. :)", Toast.LENGTH_SHORT).show()
-            myDialog!!.dismiss()
+                    Toast.makeText(applicationContext, "Cup size was set to your own size. :)", Toast.LENGTH_SHORT).show()
+                    myDialog!!.dismiss()
+                } else {
+                    Toast.makeText(applicationContext, "The amount has to be greater than 0.", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(applicationContext, "The amount value can't be empty.", Toast.LENGTH_SHORT).show()
+            }
+
+
+
         }
     }
 
@@ -474,6 +555,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun onCloseSound() {
         val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.close_sound_effect)
+        buttonClickSound.start()
+    }
+
+    private fun onWinSound() {
+        val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.win_sound_effect)
         buttonClickSound.start()
     }
 

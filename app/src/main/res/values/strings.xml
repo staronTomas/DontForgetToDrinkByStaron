@@ -33,4 +33,5 @@
     <string name="confirmMyInformation">Confirm my information.</string>
     <string name="surnameExample">Johnnson</string>
     <string name="nameExample">Mark</string>
+    <string name="congratulationsGif">Congratulations</string>
 </resources>
