@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -330,9 +329,6 @@ class MainActivity : AppCompatActivity() {
                     var progressBar = binding.waterProgressBar
                     progressBar.setProgress(0, true)
                     progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
-//
-
-
                 }
                 R.id.nav_settings -> {
                     onBtnClickSound()
