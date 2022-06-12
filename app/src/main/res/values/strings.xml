@@ -14,7 +14,6 @@
     <string name="ageUser">Age:</string>
     <string name="wakeUpTime">Wake up time:</string>
     <string name="sleepTime">Sleep time:</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="mediumCupSize">medium cup size</string>
     <string name="largeCupSize">large cup size</string>

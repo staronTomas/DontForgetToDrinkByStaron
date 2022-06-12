@@ -12,22 +12,17 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 
-
-private lateinit var name : EditText
-private lateinit var surname : EditText
-private lateinit var weight: EditText
-private lateinit var age: EditText
-
 private lateinit var genderStr: String
-
-private lateinit var wakeUpTime: EditText
-private lateinit var sleepTime: EditText
 
 private lateinit var sp : SharedPreferences
 
 
-
-
+/**
+ *
+ * toto je trieda EditProfile
+ *
+ *
+ */
 
 class EditProfile : AppCompatActivity() {
 
