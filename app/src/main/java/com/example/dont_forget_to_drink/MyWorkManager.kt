@@ -13,6 +13,12 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 
+
+/**
+ * Triedu používam na vytvorenie WorkManagera, ktorý mi umožňuje zobrazovanie notifikácií každú hodinu
+ *
+ */
+
 class MyWorkManager(context: Context, workerParameters: WorkerParameters) :
     Worker(context, workerParameters){
     companion object{
@@ -22,8 +28,9 @@ class MyWorkManager(context: Context, workerParameters: WorkerParameters) :
     }
 
 
-
-    // metoda ktorou vykonavam danu pracu
+    /** metoda ktorou vykonavam danu pracu
+     *
+     */
     override fun doWork(): Result {
         Log.d("do work success", "doWork: Success function called")
 
@@ -33,8 +40,9 @@ class MyWorkManager(context: Context, workerParameters: WorkerParameters) :
     }
 
 
-
-    // metoda ktora mi umoznuje zobrazovať notifikacie kazdu hodinu
+    /** metoda ktora mi umoznuje zobrazovať notifikacie kazdu hodinu
+     *
+     */
     private fun showNotification() {
 
 

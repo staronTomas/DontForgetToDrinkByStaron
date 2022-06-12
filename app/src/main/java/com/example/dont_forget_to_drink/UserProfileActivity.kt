@@ -17,9 +17,15 @@ lateinit var binding: UserProfileActivityBinding
 var myDialog: Dialog? = null
 private lateinit var sp : SharedPreferences
 
+
+/**
+ * V tejto aktivite si používateľ môže prezrieť svoje údaje, ktoré má uložené v aplikácií
+ * */
 class UserProfileActivity  : AppCompatActivity() {
 
-    // zakladna onCreate metoda
+    /** zakladna onCreate metoda
+     *
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)  // vypne v appke nocny rezim...
         super.onCreate(savedInstanceState)
@@ -55,7 +61,9 @@ class UserProfileActivity  : AppCompatActivity() {
     }
 
 
-    // metoda ktorou spustim umoznenie editovania dat o pouzivatelovi
+    /** metoda ktorou spustim umoznenie editovania dat o pouzivatelovi
+     *
+     */
     private fun editProfileOnCLick() {
         onBtnClickSound()
         val intent = Intent(this, EditProfile::class.java)
@@ -64,7 +72,9 @@ class UserProfileActivity  : AppCompatActivity() {
     }
 
 
-    // metoda ktorou sa vymazu vsetky data o pouzivatelovi
+    /** metoda ktorou sa vymazu vsetky data o pouzivatelovi
+     *
+     */
     private fun deleteProfileOnClick() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Warning !!!")
@@ -83,7 +93,9 @@ class UserProfileActivity  : AppCompatActivity() {
     }
 
 
-    // metoda ktorou nacitam data do aktivity
+    /** metoda ktorou nacitam data do aktivity
+     *
+     */
     private fun loadDataToUserProfileActivity() {
 
 

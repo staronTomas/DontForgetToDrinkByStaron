@@ -25,6 +25,10 @@ import com.google.android.material.navigation.NavigationView
 import java.util.concurrent.TimeUnit
 
 
+/**
+ *
+ * Main Aktivita, ktorá riadi chod aplikácie
+ * */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var toggle : ActionBarDrawerToggle
@@ -37,7 +41,9 @@ class MainActivity : AppCompatActivity() {
     var myDialog: Dialog? = null
 
 
-    // zakladna onCreate metoda
+    /**  zakladna onCreate metoda
+     *
+     */
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) // vypne v appke nocny rezim...
@@ -60,8 +66,9 @@ class MainActivity : AppCompatActivity() {
         loadDataToMainActivity()
 
 
-
-    // KOD pre zmenu cup size
+        /**  KOD pre zmenu cup size
+         *
+         */
         myDialog = Dialog(this);
         val btn_click_me = binding.changeCupSizeButton as Button
         btn_click_me.setOnClickListener {
@@ -83,7 +90,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    // metoda ktorou spustam WorkManagera a ako casto ma vykonat danu cinnost
+    /**  metoda ktorou spustam WorkManagera a ako casto ma vykonat danu cinnost
+     *
+     */
     private fun myWorkManagerFun() {
         val constraints = Constraints.Builder()
             .setRequiresCharging(false)
@@ -108,9 +117,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
-    // metoda ktorou navysim pocet vypitej vody v dany den
+    /**  metoda ktorou navysim pocet vypitej vody v dany den
+     *
+     */
     @RequiresApi(Build.VERSION_CODES.N)
     private fun increaseDrankWater(mainActivity: MainActivity) {
 
@@ -156,7 +165,10 @@ class MainActivity : AppCompatActivity() {
         builder.show()
     }
 
-
+    /**
+     *
+     * Metóda slúži na zobrazenie fragmentu v ktorom je oznámené používateľovi že dosiahol požadovaný objem vypitých tekutín
+     */
     @RequiresApi(Build.VERSION_CODES.N)
     private fun showFragmentAfterCompletion(v: MainActivity) {
         onWinSound()
@@ -177,10 +189,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
-
-    // metoda ktorou zvysim hodnotu progressBaru
+    /**  metoda ktorou zvysim hodnotu progressBaru
+     *
+     */
     @RequiresApi(Build.VERSION_CODES.N)
     private fun increaseProgressBar() {
 
@@ -203,7 +214,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    // nacitanie starych dat do aktivity
+    /** nacitanie starych dat do aktivity
+     *
+     *
+     */
     @RequiresApi(Build.VERSION_CODES.N)
     private fun loadDataToMainActivity() {
 
@@ -245,8 +259,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-    // metoda ktorou pri zapnuti overujem najskor ci je aplikacia zapnuta po prvy krat a treba nacitat data o pouzivatelovi
+    /**  metoda ktorou pri zapnuti overujem najskor ci je aplikacia zapnuta po prvy krat a treba nacitat data o pouzivatelovi
+     *
+     */
     private fun isStartedFirstTime() {
 
         welcomeSound()
@@ -270,7 +285,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    // metoda ktora sfunkcnuje bocne menu
+    /**  metoda ktora sfunkcnuje bocne menu
+     *
+     */
     @RequiresApi(Build.VERSION_CODES.N)
     private fun showSideMenu() {
 
@@ -350,7 +367,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    // metoda ktora mi umozni zobrazovať zmenenie velkosti pohara
+    /** metoda ktora mi umozni zobrazovať zmenenie velkosti pohara
+     *
+     */
     @RequiresApi(Build.VERSION_CODES.N)
     private fun showChangeSizePopUp(v: MainActivity) {
         myDialog?.setContentView(R.layout.change_cup_size_pop_up)
@@ -443,7 +462,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    // onOptions metoda
+    /**  onOptions metoda
+     *
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         if(toggle.onOptionsItemSelected(item)) {
@@ -453,16 +474,19 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    // Ked sa mi znova zapne tato aktivita
-
-    // Restart metoda
+    /**
+     * Ked sa mi znova zapne tato aktivita
+     * Restart metoda
+     */
     override fun onRestart() {
         super.onRestart()
         finish()
         startActivity(intent)
     }
 
-    // ked stlaci clovek back Button na activity main, tak sa ho to opyta ci chce naozaj skoncit aplikaciu.
+    /** ked stlaci clovek back Button na activity main, tak sa ho to opyta ci chce naozaj skoncit aplikaciu.
+     *
+     */
     override fun onBackPressed() {
 
 
@@ -483,10 +507,9 @@ class MainActivity : AppCompatActivity() {
         builder.show()
 
     }
-
-    // MUSIC PLAYER
-
-
+    /** MUSIC PLAYER
+     *
+     */
     private fun playSound() {
         if (mMediaPlayer == null) {
             mMediaPlayer = MediaPlayer.create(this, R.raw.background_music)
@@ -495,12 +518,16 @@ class MainActivity : AppCompatActivity() {
         } else mMediaPlayer!!.start()
     }
 
-    // 2. Pause playback
+    /** 2. Pause playback
+     *
+     */
     private fun pauseSound() {
         if (mMediaPlayer?.isPlaying == true) mMediaPlayer?.pause()
     }
 
-    // 3. Stops playback
+    /** 3. Stops playback
+     *
+     */
     private fun stopSound() {
         if (mMediaPlayer != null) {
             mMediaPlayer!!.stop()
@@ -509,7 +536,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // 4. Destroys the MediaPlayer instance when the app is closed
+    /** 4. Destroys the MediaPlayer instance when the app is closed
+     *
+     */
     override fun onStop() {
         super.onStop()
         if (mMediaPlayer != null) {
@@ -518,7 +547,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // ked znova spustim appku tak sa mi nanovo spusti hudba
+    /** ked znova spustim appku tak sa mi nanovo spusti hudba
+     *
+     */
     override fun onResume() {
         super.onResume()
         if (mMediaPlayer == null) {

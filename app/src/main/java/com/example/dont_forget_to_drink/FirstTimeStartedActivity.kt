@@ -15,6 +15,10 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.example.dont_forget_to_drink.databinding.ActivityFirstTimeStartedBinding
 
 
+/**
+ * Trieda je využitá pri prvotnom spustení aplikácie, pretože sa vyžaduje zadanie vstupných dát používateľa, prípadne poiaľ použíateľ vymaže všetky dáta o sebe
+ * */
+
 class FirstTimeStartedActivity : AppCompatActivity() {
 
 
@@ -45,7 +49,9 @@ class FirstTimeStartedActivity : AppCompatActivity() {
     lateinit var binding: ActivityFirstTimeStartedBinding
 
 
-    //zakladna onCreate metoda pre vznik novej aktivity
+    /**zakladna onCreate metoda pre vznik novej aktivity
+     *
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)  // vypne v appke nocny rezim...
         super.onCreate(savedInstanceState)
@@ -70,7 +76,9 @@ class FirstTimeStartedActivity : AppCompatActivity() {
         playSound()
 
 
-        // tento button listener je na prvotné spustenie aplikacie, pomocou neho sa potvrdzuju udaje o pouzivatelovi, ktory bude appku pouzivat
+        /** tento button listener je na prvotné spustenie aplikacie, pomocou neho sa potvrdzuju udaje o pouzivatelovi, ktory bude appku pouzivat
+         *
+         */
         btnConfirm.setOnClickListener {
 
             onConfirmSound()
@@ -100,9 +108,10 @@ class FirstTimeStartedActivity : AppCompatActivity() {
             else {
 
 
-                // tu prebehne vypocet denneho prijmu tekutin
-                // robil som to podla stranky kde sa to pocitalo v ounces nie v ml, tak tu robim aj prevody
-                // link na stranku s pocitanim:  https://www.weightwatchers.com/ca/en/article/how-much-water-should-you-drink-every-day
+                /** tu prebehne vypocet denneho prijmu tekutin
+                * robil som to podla stranky kde sa to pocitalo v ounces nie v ml, tak tu robim aj prevody
+                * link na stranku s pocitanim:  https://www.weightwatchers.com/ca/en/article/how-much-water-should-you-drink-every-day
+                */
 
                 var resultWaterInTake = 0.0
 
@@ -166,7 +175,9 @@ class FirstTimeStartedActivity : AppCompatActivity() {
         }
     }
 
-    // sfunkcnenie radio buttonov pre pohlavie
+    /** sfunkcnenie radio buttonov pre pohlavie
+     *
+     */
     fun onRadioButtonClicked(view: View) {
         if (view is RadioButton) {
             // Is the button now checked?
@@ -189,25 +200,27 @@ class FirstTimeStartedActivity : AppCompatActivity() {
     }
 
 
-    // metoda pre tlacidlo "späť"
+    /**metoda pre tlacidlo "späť"
+     *
+     */
     override fun onBackPressed() {
         // super.onBackPressed();
         // Not calling **super**, disables back button in current screen.
     }
 
 
-
-    // metoda ktorou sa vratim spat do MainActivity
+    /** metoda ktorou sa vratim spat do MainActivity
+     *
+     */
     private fun backToActivityMain() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 
 
-
-
-
-    // MUSIC PLAYER
+    /** MUSIC PLAYER
+     *
+     */
     fun playSound() {
         if (mMediaPlayer == null) {
             mMediaPlayer = MediaPlayer.create(this, R.raw.first_time_activity_music)
@@ -230,7 +243,9 @@ class FirstTimeStartedActivity : AppCompatActivity() {
         }
     }
 
-    // 4. Destroys the MediaPlayer instance when the app is closed
+    /** 4. Destroys the MediaPlayer instance when the app is closed
+     *
+     */
     override fun onStop() {
         super.onStop()
         if (mMediaPlayer != null) {

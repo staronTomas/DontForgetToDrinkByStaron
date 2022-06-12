@@ -26,7 +26,9 @@ private lateinit var sp : SharedPreferences
 
 class EditProfile : AppCompatActivity() {
 
-    // zakladna onCreate metoda pre aktivitu kde sa upravuje profil použivatela
+    /** zakladna onCreate metoda pre aktivitu kde sa upravuje profil použivatela
+     *
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
@@ -38,7 +40,9 @@ class EditProfile : AppCompatActivity() {
         loadOldData()
 
 
-        // Button listeners pre horne a aj dolne tlacidlo confirm edit profile
+        /** Button listeners pre horne a aj dolne tlacidlo confirm edit profile
+         *
+         */
         var editProfileButton1 = findViewById<ImageButton>(R.id.editProfileButtonTop)
         editProfileButton1.setOnClickListener {
             onBtnClickSound()
@@ -61,7 +65,9 @@ class EditProfile : AppCompatActivity() {
 
     }
 
-    // tu prebehne alert pre potvrdenie zmien profilu
+    /** tu prebehne alert pre potvrdenie zmien profilu
+     *
+     */
     private fun alertChangeProfileDetails() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Attention !")
@@ -79,7 +85,9 @@ class EditProfile : AppCompatActivity() {
         builder.show()
     }
 
-    // tu prebehne zmena dat o pouzivatelovi
+    /** tu prebehne zmena dat o pouzivatelovi
+     *
+     */
     private fun changeProfileDetails() {
 
         var nameStr = findViewById<EditText>(R.id.editName).text.toString()
@@ -172,7 +180,9 @@ class EditProfile : AppCompatActivity() {
     }
 
 
-    // nacitaju sa stare data do hintov pre
+    /** nacitaju sa stare data do hintov pre
+     *
+     */
     private fun loadOldData() {
         var userName = sp.getString("userName", "")
         var userSurname = sp.getString("userSurname", "")
@@ -231,7 +241,9 @@ class EditProfile : AppCompatActivity() {
     }
 
 
-    // sfunkcenie radio buttonov pre pohlavie
+    /** sfunkcenie radio buttonov pre pohlavie
+     *
+     */
     fun onRadioButtonClicked(view: View) {
         if (view is RadioButton) {
             // Is the button now checked?
