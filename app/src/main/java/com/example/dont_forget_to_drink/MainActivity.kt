@@ -559,7 +559,7 @@ class MainActivity : AppCompatActivity() {
         } else mMediaPlayer!!.start()
     }
 
-
+//
     private fun welcomeSound() {
         val buttonClickSound: MediaPlayer = MediaPlayer.create(this, R.raw.welcome_sound)
         buttonClickSound.start()
